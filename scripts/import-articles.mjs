@@ -8,6 +8,9 @@ const map = {
   'steamos-proton-daily-2026-10-13': { cat: 'news', tags: ['steamos','proton','steam-deck','remote-play'], cover: 'steamos-proton-daily-2026-10-13' },
   'planet-zoo-2-geforce-now': { cat: 'retro-emulation-cloud', tags: ['cloud-gaming','geforce-now','planet-zoo-2'], cover: 'planet-zoo-2' },
   'oclp-3-0-0-rc3-hackintosh': { cat: 'project-updates', tags: ['macos','oclp','hackintosh'], cover: 'oclp-3-0-0-rc3' },
+  'steamos-legion-go-setup-guide': { cat: 'guides', cover: 'steamos-legion-go-setup-guide' },
+  'steamos-handheld-performance-battery-tuning': { cat: 'guides', cover: 'steamos-handheld-performance-battery-tuning' },
+  'decky-deck-live-plugin': { cat: 'decky-plugins', cover: 'decky-deck-live-plugin' },
   'winui-gallery-3-0': { cat: 'news', tags: ['windows','winui','dev'], cover: 'winui-gallery-3-0' },
 };
 const q = s => JSON.stringify(s);
@@ -23,6 +26,8 @@ for (const [slug, m] of Object.entries(map)) {
     if (by) { author = by[1]; const d = new Date(by[2] + ' 12:00'); if (!isNaN(d)) date = d.toISOString().slice(0,10); i++; break; }
     if (l && title && desc) break;
   }
+  if (!m.tags) { const c = path.join(SRC, slug + '.captions.md'); const t = fs.existsSync(c) && fs.readFileSync(c, 'utf8').match(/## Pickax tags\s*\n+([^\n]+)/);
+    m.tags = t ? t[1].split(',').map(x => x.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).filter(Boolean) : []; }
   const body = lines.slice(i).join('\n').trim();
   const src = path.join(SRC, m.cover + '-cover-pickax-1920x1080.jpg');
   let cover; if (fs.existsSync(src)) { fs.copyFileSync(src, path.join(COV, slug + '.jpg')); cover = `covers/${slug}.jpg`; }
