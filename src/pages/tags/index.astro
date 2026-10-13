@@ -1,0 +1,6 @@
+---
+import { getCollection } from 'astro:content'; import Base from '../../layouts/Base.astro'; import { url } from '../../site';
+const counts: Record<string, number> = {}; (await getCollection('posts')).forEach(p => p.data.tags.forEach(t => counts[t] = (counts[t] || 0) + 1));
+---
+<Base title="Tags" active="tags"><h1 class="page-h">Tags</h1>
+<p class="tags big">{Object.entries(counts).sort().map(([t, n]) => <a class="tag" href={url(`tags/${t}`)}>#{t} <small>{n}</small></a>)}</p></Base>

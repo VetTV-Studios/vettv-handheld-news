@@ -1,0 +1,12 @@
+---
+import { CATS, url, asset, fmt } from '../site';
+const { post, big = false } = Astro.props; const d = post.data;
+---
+<article class={`card ${big ? 'big' : ''}`}>
+  <a href={url(`posts/${post.id}`)} class="thumb">
+    {d.cover ? <img src={asset(d.cover)} alt="" loading="lazy" /> : <div class="ph"><img src={asset('art/watermark_150x150.png')} alt="" /></div>}
+  </a>
+  <div class="meta"><a class="pill" href={url(d.category)}>{CATS[d.category]}</a>{d.sample && <span class="pill sample">Sample</span>}<time>{fmt(d.pubDate)}</time></div>
+  <h3><a href={url(`posts/${post.id}`)}>{d.title}</a></h3>
+  {big && <p>{d.description}</p>}
+</article>

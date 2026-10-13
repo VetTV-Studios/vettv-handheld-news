@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro'; import Card from '../../components/Card.astro';
+import { CATS, url, asset, fmt, SITE } from '../../site';
+export async function getStaticPaths() { return (await getCollection('posts')).map(post => ({ params: { id: post.id }, props: { post } })); }
+const { post } = Astro.props; const d = post.data; const { Content } = await render(post);
+const related = (await getCollection('posts')).filter(p => p.id !== post.id && (p.data.category === d.category || p.data.tags.some(t => d.tags.includes(t)))).slice(0, 3);
+const ld = { '@context': 'https://schema.org', '@type': 'NewsArticle', headline: d.title, description: d.description, datePublished: d.pubDate.toISOString(), author: { '@type': 'Person', name: d.author }, publisher: { '@type': 'Organization', name: SITE.name }, image: d.cover ? [new URL(asset(d.cover), Astro.site).href] : undefined };
+---
+<Base title={d.title} description={d.description} image={d.cover} type="article" active={d.category}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(ld)} />
+  <article class="post" data-pagefind-body>
+    <div class="meta" data-pagefind-ignore><a class="pill" href={url(d.category)}>{CATS[d.category]}</a>{d.sample && <span class="pill sample">Sample</span>}<time datetime={d.pubDate.toISOString()}>{fmt(d.pubDate)}</time></div>
+    <h1>{d.title}</h1><p class="dek">{d.description}</p><p class="by">By {d.author}</p>
+    {d.cover && <img class="cover" src={asset(d.cover)} alt="" />}
+    <div class="prose"><Content /></div>
+    <p class="tags">{d.tags.map(t => <a class="tag" href={url(`tags/${t}`)}>#{t}</a>)}</p>
+  </article>
+  {related.length > 0 && <><h2 class="sec">Related</h2><section class="grid">{related.map(p => <Card post={p} />)}</section></>}
+</Base>

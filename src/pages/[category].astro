@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro'; import Card from '../components/Card.astro';
+import { CATS, sortPosts } from '../site';
+export async function getStaticPaths() {
+  const all = await getCollection('posts');
+  return Object.keys(CATS).map(category => ({ params: { category }, props: { posts: sortPosts(all.filter(p => p.data.category === category)) } }));
+}
+const { category } = Astro.params; const { posts } = Astro.props;
+---
+<Base title={CATS[category]} description={`${CATS[category]} from VetTV Handheld News`} active={category}>
+  <h1 class="page-h">{CATS[category]}</h1>
+  {posts.length ? <section class="grid">{posts.map((p, i) => <Card post={p} big={i === 0} />)}</section> : <p class="muted">No posts yet.</p>}
+</Base>

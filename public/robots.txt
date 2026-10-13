@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vettv-studios.github.io/vettv-handheld-news/sitemap-index.xml

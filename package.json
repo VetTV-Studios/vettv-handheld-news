@@ -1,0 +1,19 @@
+{
+  "name": "vettv-handheld-news",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview --host 0.0.0.0 --port 4321",
+    "import": "node scripts/import-articles.mjs"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^5.18.2",
+    "pagefind": "^1.5.2",
+    "playwright-core": "^1.64.0"
+  }
+}

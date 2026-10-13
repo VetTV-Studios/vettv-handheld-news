@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro'; import { asset } from '../site';
+---
+<Base title="Search" description="Search VetTV Handheld News">
+  <h1 class="page-h">Search</h1>
+  <link slot="head" rel="stylesheet" href={asset('pagefind/pagefind-ui.css')} />
+  <div id="search"></div>
+  <script is:inline src={asset('pagefind/pagefind-ui.js')}></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      const ui = new PagefindUI({ element: '#search', showSubResults: true, showImages: false });
+      const q = new URLSearchParams(location.search).get('q'); if (q) ui.triggerSearch(q);
+    });
+  </script>
+</Base>

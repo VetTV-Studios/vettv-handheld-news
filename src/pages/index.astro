@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro'; import Card from '../components/Card.astro';
+import { CATS, url, asset, fmt, sortPosts } from '../site';
+const posts = sortPosts(await getCollection('posts'));
+const hero = posts.find(p => p.data.featured) ?? posts[0];
+const rest = posts.filter(p => p !== hero);
+const side = rest.slice(0, 3);
+---
+<Base>
+  <section class="hero">
+    <a class="hero-main" href={url(`posts/${hero.id}`)} style={`background-image:linear-gradient(180deg,transparent 30%,#14061fee),url(${asset(hero.data.cover || 'art/banner_2560x1440.png')})`}>
+      <span class="pill">{CATS[hero.data.category]}</span>
+      <h1>{hero.data.title}</h1><p>{hero.data.description}</p><time>{fmt(hero.data.pubDate)} · {hero.data.author}</time>
+    </a>
+    <div class="hero-side">{side.map(p => <Card post={p} />)}</div>
+  </section>
+  <h2 class="sec">Latest</h2>
+  <section class="grid">{rest.map(p => <Card post={p} />)}</section>
+  {Object.entries(CATS).map(([k, v]) => { const ps = posts.filter(p => p.data.category === k).slice(0, 4); return ps.length > 0 && (
+    <><h2 class="sec"><a href={url(k)}>{v} →</a></h2><section class="grid">{ps.map(p => <Card post={p} />)}</section></>); })}
+</Base>
