@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import Base from '../../layouts/Base.astro'; import Card from '../../components/Card.astro';
+import Base from '../../layouts/Base.astro'; import Card from '../../components/Card.astro'; import Subscribe from '../../components/Subscribe.astro';
 import { CATS, url, asset, fmt, SITE } from '../../site';
 export async function getStaticPaths() { return (await getCollection('posts')).map(post => ({ params: { id: post.id }, props: { post } })); }
 const { post } = Astro.props; const d = post.data; const { Content } = await render(post);
@@ -16,5 +16,6 @@ const ld = { '@context': 'https://schema.org', '@type': 'NewsArticle', headline:
     <div class="prose"><Content /></div>
     <p class="tags">{d.tags.map(t => <a class="tag" href={url(`tags/${t}`)}>#{t}</a>)}</p>
   </article>
+  <div class="post-sub"><Subscribe id="post-sub" heading="Liked this? Get more every week" /></div>
   {related.length > 0 && <><h2 class="sec">Related</h2><section class="grid">{related.map(p => <Card post={p} />)}</section></>}
 </Base>
