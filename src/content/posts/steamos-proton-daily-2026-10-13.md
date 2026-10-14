@@ -12,14 +12,14 @@ Happy Tuesday, handheld crew. There's no new SteamOS release today, but the Stea
 
 ## Lead story: Steam Deck streaming gets fixed up
 
-Valve posted a batch of Steam client beta notes on steamdeck.com on October 12, covering betas from October 9 and 10. Most of the changes are about Remote Play, and they're good news if you stream games from your PC to a Deck.
+Valve posted a batch of Steam client beta notes on steamdeck.com on October 12, covering betas from October 9, 10 and 12. Most of the changes are about Remote Play, and they're good news if you stream games from your PC to a Deck.
 
-From the **October 10** beta:
+From the **October 12** beta:
 
 - **Fixed HEVC hardware encoding on Steam Deck.**
 - Fixed a crash when changing the hardware encoding setting while not streaming.
 
-A second October 10 update also:
+The October 10 beta also:
 
 - Fixed crashes when using the controller to interact with streaming dialogs.
 - Fixed deleting an uploaded screenshot only removing the local copy.
@@ -92,7 +92,7 @@ That's it for today. As always, client betas are opt-in. Drop your streaming res
 
 ## Sources
 
-- Steam Deck News (Steam client betas Oct 5 to 10, posted Oct 12, 2026): https://www.steamdeck.com/en/news
+- Steam Deck News (Steam client betas Oct 5 to 12, 2026): https://www.steamdeck.com/en/news
 - GamingOnLinux, "Windows apps and games added to Steam on SteamOS / Linux now use Proton by default" (Oct 8, 2026): https://www.gamingonlinux.com/2026/10/windows-apps-and-games-added-to-steam-on-steamos-linux-now-use-proton-by-default/
 - GamingOnLinux, "Proton Experimental gets updated to fix a prefix corruption bug and more" (Oct 13, 2026): https://www.gamingonlinux.com/2026/10/proton-experimental-gets-updated-to-fix-a-prefix-corruption-bug-and-more/
 - Valve, Proton Changelog (GitHub wiki, updated Oct 12, 2026): https://github.com/ValveSoftware/Proton/wiki/Changelog
