@@ -12,6 +12,8 @@ const map = {
   'steamos-handheld-performance-battery-tuning': { cat: 'guides', cover: 'steamos-handheld-performance-battery-tuning' },
   'decky-deck-live-plugin': { cat: 'decky-plugins', cover: 'decky-deck-live-plugin' },
   'steamos-proton-evening-2026-10-13': { cat: 'news', cover: 'steamos-proton-evening-2026-10-13' },
+  'steam-frame-steamos-0-4-steamvr-2-18-3': { cat: 'news', cover: 'steam-frame-steamos-0-4-steamvr-2-18-3' },
+  'steam-frame-backorder-2027': { cat: 'news', cover: 'steam-frame-backorder-2027' },
   'winui-gallery-3-0': { cat: 'news', tags: ['windows','winui','dev'], cover: 'winui-gallery-3-0' },
 };
 const q = s => JSON.stringify(s);
