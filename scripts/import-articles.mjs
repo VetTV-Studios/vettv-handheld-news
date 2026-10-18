@@ -30,6 +30,7 @@ const map = {
   'steam-frame-steamvr-2026-10-17': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steam-frame-steamvr-2026-10-17' },
   'jamie-craven-spedley-securities': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'jamie-craven-spedley-securities', offTopic: true },
   'windows-11-gaming-task-view-run-dialog': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'windows-11-gaming-task-view-run-dialog' },
+  'windows-11-ms-dos-8-3-file-names': { dir: '/workspace/vettv-articles', cat: 'retro-emulation-cloud', cover: 'windows-11-ms-dos-8-3-file-names', offTopic: true },
 };
 const q = s => JSON.stringify(s);
 const only = process.argv.slice(2);
