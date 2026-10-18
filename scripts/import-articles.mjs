@@ -31,6 +31,7 @@ const map = {
   'jamie-craven-spedley-securities': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'jamie-craven-spedley-securities', offTopic: true },
   'windows-11-gaming-task-view-run-dialog': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'windows-11-gaming-task-view-run-dialog' },
   'windows-11-ms-dos-8-3-file-names': { dir: '/workspace/vettv-articles', cat: 'retro-emulation-cloud', cover: 'windows-11-ms-dos-8-3-file-names', offTopic: true },
+  'reactos-nt6-users-folder': { dir: '/workspace/vettv-articles', cat: 'retro-emulation-cloud', cover: 'reactos-nt6-users-folder', offTopic: true },
 };
 const q = s => JSON.stringify(s);
 const only = process.argv.slice(2);
