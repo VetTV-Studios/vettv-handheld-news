@@ -7,7 +7,8 @@ const posts = defineCollection({
     title: z.string(), description: z.string(), pubDate: z.coerce.date(),
     author: z.string().default('Vet'), category: z.enum(CATEGORIES), tags: z.array(z.string()).default([]),
     cover: z.string().optional(), featured: z.boolean().default(false), sample: z.boolean().default(false),
-    source: z.string().optional(),
+    source: z.string().optional(), summary: z.string().optional(), offTopic: z.boolean().default(false),
+    sources: z.array(z.object({ title: z.string(), url: z.string().url() })).default([]),
   }),
 });
 export const collections = { posts };
