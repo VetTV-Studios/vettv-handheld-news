@@ -28,6 +28,7 @@ const map = {
   'beam-desktop-app-linux': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'beam-desktop-app-linux' },
   'steamos-proton-daily-2026-10-17': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steamos-proton-daily-2026-10-17' },
   'steam-frame-steamvr-2026-10-17': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steam-frame-steamvr-2026-10-17' },
+  'jamie-craven-spedley-securities': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'jamie-craven-spedley-securities', offTopic: true },
 };
 const q = s => JSON.stringify(s);
 const only = process.argv.slice(2);
