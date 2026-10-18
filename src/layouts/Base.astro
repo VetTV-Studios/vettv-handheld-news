@@ -2,8 +2,8 @@
 import { SITE, CATS, url, asset } from '../site';
 import '../styles/global.css';
 import Subscribe from '../components/Subscribe.astro';
-const { title, description = SITE.tagline, image, type = 'website', active = '' } = Astro.props;
-const fullTitle = title ? `${title} | ${SITE.name}` : SITE.name;
+const { title, seoTitle, description = SITE.tagline, image, type = 'website', active = '' } = Astro.props;
+const fullTitle = seoTitle ? `${seoTitle} | ${SITE.name}` : title ? `${title} | ${SITE.name}` : SITE.name;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const og = new URL(asset(image || 'art/banner_2560x1440.png'), Astro.site);
 ---

@@ -29,6 +29,7 @@ const map = {
   'steamos-proton-daily-2026-10-17': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steamos-proton-daily-2026-10-17' },
   'steam-frame-steamvr-2026-10-17': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steam-frame-steamvr-2026-10-17' },
   'jamie-craven-spedley-securities': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'jamie-craven-spedley-securities', offTopic: true },
+  'windows-11-gaming-task-view-run-dialog': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'windows-11-gaming-task-view-run-dialog' },
 };
 const q = s => JSON.stringify(s);
 const only = process.argv.slice(2);
@@ -48,12 +49,14 @@ for (const [slug, m] of Object.entries(map)) {
   }
   if (!m.tags) { const c = path.join(SRC, slug + '.captions.md'); const t = fs.existsSync(c) && fs.readFileSync(c, 'utf8').match(/## Pickax tags\s*\n+([^\n]+)/);
     m.tags = t ? t[1].split(',').map(x => x.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).filter(Boolean) : []; }
+  const capF = path.join(SRC, slug + '.captions.md'); const cap = fs.existsSync(capF) ? fs.readFileSync(capF, 'utf8') : '';
+  const seo = cap.match(/## SEO title[^\n]*\n+([^\n]+)/); const seoTitle = seo ? seo[1].trim() : '';
   const sources = []; const si = lines.findIndex(l => /^##\s+Sources/i.test(l));
   if (si >= 0) for (const l of lines.slice(si + 1)) { if (/^#/.test(l)) break; const mm = l.match(/^[-*]\s+(.+?):\s+(https?:\/\/\S+)\s*$/); if (mm) sources.push({ title: mm[1], url: mm[2] }); }
   const body = lines.slice(i).join('\n').trim();
   const src = path.join(SRC, m.cover + '-cover-pickax-1920x1080.jpg');
   let cover; if (fs.existsSync(src)) { fs.copyFileSync(src, path.join(COV, slug + '.jpg')); cover = `covers/${slug}.jpg`; }
-  const fm = ['---', `title: ${q(title)}`, `description: ${q(desc)}`, `summary: ${q(desc)}`, `pubDate: ${date}`, `author: ${q(author)}`,
+  const fm = ['---', `title: ${q(title)}`, `description: ${q(desc)}`, `summary: ${q(desc)}`, seoTitle ? `seoTitle: ${q(seoTitle)}` : '', `pubDate: ${date}`, `author: ${q(author)}`,
     `category: ${m.cat}`, `tags: ${q(m.tags)}`, cover ? `cover: ${q(cover)}` : '', m.featured ? 'featured: true' : '', m.offTopic ? 'offTopic: true' : '',
     sources.length ? 'sources:\n' + sources.map(x => `  - title: ${q(x.title)}\n    url: ${q(x.url)}`).join('\n') : '',
     `source: ${q('Article Desk: ' + slug + '.md')}`, '---', ''].filter(Boolean).join('\n');

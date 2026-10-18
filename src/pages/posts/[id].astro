@@ -7,7 +7,7 @@ const { post } = Astro.props; const d = post.data; const { Content } = await ren
 const related = (await getCollection('posts')).filter(p => p.id !== post.id && (p.data.category === d.category || p.data.tags.some(t => d.tags.includes(t)))).slice(0, 3);
 const ld = { '@context': 'https://schema.org', '@type': 'NewsArticle', headline: d.title, description: d.description, datePublished: d.pubDate.toISOString(), author: { '@type': 'Person', name: d.author }, publisher: { '@type': 'Organization', name: SITE.name }, image: d.cover ? [new URL(asset(d.cover), Astro.site).href] : undefined, citation: d.sources.length ? d.sources.map(s => ({ '@type': 'CreativeWork', name: s.title, url: s.url })) : undefined };
 ---
-<Base title={d.title} description={d.description} image={d.cover} type="article" active={d.category}>
+<Base title={d.title} seoTitle={d.seoTitle} description={d.description} image={d.cover} type="article" active={d.category}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(ld)} />
   <article class="post" data-pagefind-body>
     <div class="meta" data-pagefind-ignore><a class="pill" href={url(d.category)}>{CATS[d.category]}</a>{d.sample && <span class="pill sample">Sample</span>}<time datetime={d.pubDate.toISOString()}>{fmt(d.pubDate)}</time></div>
