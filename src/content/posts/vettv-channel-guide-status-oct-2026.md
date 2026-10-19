@@ -11,7 +11,7 @@ tags: ["vettv-studios","retro-tv","youtube","nostalgia","web-development"]
 cover: "covers/vettv-channel-guide-status-oct-2026.jpg"
 offTopic: true
 sources:
-  - title: "First-party project update from VetTV Studios. YouTube embedded players reference"
+  - title: "YouTube IFrame Player API reference"
     url: "https://developers.google.com/youtube/iframe_api_reference"
 source: "Article Desk: vettv-channel-guide-status-oct-2026.md"
 ---
@@ -67,4 +67,4 @@ This one's been a blast to build. The CRT glow and channel bugs are pure nostalg
 ---
 
 ## Sources
-- First-party project update from VetTV Studios. YouTube embedded players reference: https://developers.google.com/youtube/iframe_api_reference
+- YouTube IFrame Player API reference: https://developers.google.com/youtube/iframe_api_reference
