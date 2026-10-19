@@ -1,7 +1,7 @@
 export const SITE = { name: 'VetTV Handheld News', tagline: 'Steam Deck, Legion Go & handheld PC news, guides and reviews', youtube: 'https://youtube.com/@VetTVHandheld' };
 export const CATS: Record<string, string> = {
   'news': 'News', 'guides': 'Guides', 'reviews': 'Reviews', 'decky-plugins': 'Decky Plugins',
-  'project-updates': 'Project Updates', 'cloud-gaming': 'Cloud Gaming', 'retro-emulation': 'Retro & Emulation',
+  'project-updates': 'Project Updates', 'cloud-gaming': 'Cloud Gaming', 'steam-deals': 'Steam Deals', 'retro-emulation': 'Retro & Emulation',
 };
 export const url = (p = '') => { const b = import.meta.env.BASE_URL.replace(/\/$/, ''); p = p.replace(/^\/|\/$/g, ''); return p ? `${b}/${p}/` : `${b}/`; };
 export const asset = (p: string) => import.meta.env.BASE_URL.replace(/\/$/, '') + '/' + p.replace(/^\//, '');
@@ -18,5 +18,6 @@ export const CAT_DESC: Record<string, string> = {
   'decky-plugins': 'Decky Loader plugins worth installing, including VetTV-built ones.',
   'project-updates': "Progress reports from VetTV's own builds and experiments.",
   'cloud-gaming': 'Stream it, don\'t install it. News, tests and deals for Amazon Luna, Xbox Cloud Gaming, GeForce NOW and Boosteroid, with a handheld player\'s eye on latency, battery and what actually runs.',
+  'steam-deals': 'Game deals for SteamOS players: bundles and sales checked against Valve\'s Steam Deck ratings, with native Linux builds, prices and end times called out.',
   'retro-emulation': 'Classic games, emulators, compatibility layers and the old-school tech that keeps them running.',
 };

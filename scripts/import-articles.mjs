@@ -37,10 +37,11 @@ const map = {
   'disney-character-ai-hiring': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'disney-character-ai-hiring', offTopic: true },
   'luna-free-games-caravan-sandwitch-swansong': { dir: '/workspace/vettv-articles', cat: 'cloud-gaming', cover: 'luna-free-games-caravan-sandwitch-swansong' },
   'steamos-proton-daily-2026-10-19': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steamos-proton-daily-2026-10-19' },
+  'double-fine-humble-bundle-steam-deck': { dir: '/workspace/vettv-articles', cat: 'steam-deals', cover: 'double-fine-humble-bundle-steam-deck' },
 };
-// Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, else News.
+// Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, else News.
 const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
-const autoCat = (tags, title) => (tags.some(t => CLOUD.test(t.replace(/-/g, ' '))) || CLOUD.test(title)) ? 'cloud-gaming' : 'news';
+const autoCat = (tags, title) => tags.includes('steam-deals') ? 'steam-deals' : (tags.some(t => CLOUD.test(t.replace(/-/g, ' '))) || CLOUD.test(title)) ? 'cloud-gaming' : 'news';
 const q = s => JSON.stringify(s);
 const only = process.argv.slice(2);
 for (const [slug, m] of Object.entries(map)) {
