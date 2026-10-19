@@ -6,7 +6,7 @@ seoTitle: "Xodus Nexus: Unofficial PC Game Pass Launcher for Steam Deck"
 pubDate: 2026-10-19
 publishedAt: 2026-10-19T17:06:01.044Z
 author: "Vet, VetTV Handheld"
-category: news
+category: steamos-news
 tags: ["steam-deck","steamos","pc-game-pass","linux-gaming","xbox"]
 cover: "covers/xodus-nexus-game-pass-steam-deck.jpg"
 sources:

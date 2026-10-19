@@ -144,5 +144,6 @@ main{padding:24px 20px 48px}
  .foot{padding:22px 0}.foot p a{display:inline-block;padding:8px 4px}
 }
 @media (max-width:380px){.brand{font-size:.92rem;gap:6px}.brand img{width:30px;height:30px}.bar{gap:4px}}
-/* 8 sections: tighten desktop nav between tablet and wide so Tags/Subscribe stay visible */
-@media (min-width:769px) and (max-width:1179px){.cats .wrap{gap:2px}.cats a{padding:10px 9px;font-size:.88rem}}
+/* 9 sections: default nav needs ~1280px but .wrap caps at 1240px, so tighten on all desktop widths; tighter still below 1180px */
+@media (min-width:769px){.cats .wrap{gap:2px}.cats a{padding:10px 9px;font-size:.88rem}}
+@media (min-width:769px) and (max-width:1179px){.cats .wrap{gap:0}.cats a{padding:10px 7px;font-size:.84rem}}

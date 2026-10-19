@@ -40,11 +40,11 @@ const map = {
   'double-fine-humble-bundle-steam-deck': { dir: '/workspace/vettv-articles', cat: 'steam-deals', cover: 'double-fine-humble-bundle-steam-deck' },
   'xbox-ai-strategy-sharma-labs-stirrup': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'xbox-ai-strategy-sharma-labs-stirrup', offTopic: true },
   'steam-beta-linux-alt-tab-fix-incomplete': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steam-beta-linux-alt-tab-fix-incomplete' },
-  'xodus-nexus-game-pass-steam-deck': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'xodus-nexus-game-pass-steam-deck' },
+  'xodus-nexus-game-pass-steam-deck': { dir: '/workspace/vettv-articles', cat: 'steamos-news', cover: 'xodus-nexus-game-pass-steam-deck' },
 };
-// Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, else News.
+// Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, a 'steamos-news' tag -> SteamOS News, else News.
 const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
-const autoCat = (tags, title) => tags.includes('steam-deals') ? 'steam-deals' : (tags.some(t => CLOUD.test(t.replace(/-/g, ' '))) || CLOUD.test(title)) ? 'cloud-gaming' : 'news';
+const autoCat = (tags, title) => tags.includes('steam-deals') ? 'steam-deals' : tags.includes('steamos-news') ? 'steamos-news' : (tags.some(t => CLOUD.test(t.replace(/-/g, ' '))) || CLOUD.test(title)) ? 'cloud-gaming' : 'news';
 const q = s => JSON.stringify(s);
 const only = process.argv.slice(2);
 for (const [slug, m] of Object.entries(map)) {

@@ -1,6 +1,6 @@
 export const SITE = { name: 'VetTV Handheld News', tagline: 'Steam Deck, Legion Go & handheld PC news, guides and reviews', youtube: 'https://youtube.com/@VetTVHandheld' };
 export const CATS: Record<string, string> = {
-  'news': 'News', 'guides': 'Guides', 'reviews': 'Reviews', 'decky-plugins': 'Decky Plugins',
+  'news': 'News', 'steamos-news': 'SteamOS News', 'guides': 'Guides', 'reviews': 'Reviews', 'decky-plugins': 'Decky Plugins',
   'project-updates': 'Project Updates', 'cloud-gaming': 'Cloud Gaming', 'steam-deals': 'Steam Deals', 'retro-emulation': 'Retro & Emulation',
 };
 export const url = (p = '') => { const b = import.meta.env.BASE_URL.replace(/\/$/, ''); p = p.replace(/^\/|\/$/g, ''); return p ? `${b}/${p}/` : `${b}/`; };
@@ -13,6 +13,7 @@ export const sortPosts = <T extends P>(p: T[]) => p.sort((a, b) =>
   ((+(b.data.publishedAt ?? 0)) - (+(a.data.publishedAt ?? 0))) || a.id.localeCompare(b.id));
 export const CAT_DESC: Record<string, string> = {
   'news': 'The latest from Steam Deck, Legion Go, SteamOS, Proton and the wider handheld PC scene.',
+  'steamos-news': 'SteamOS itself: client and OS updates, betas, Proton and compatibility news, and the tools that change what runs on Steam Deck and other SteamOS handhelds.',
   'guides': 'Step-by-step help for setting up, tuning and getting more out of your handheld.',
   'reviews': 'Hands-on verdicts on handhelds, accessories and the games that run on them.',
   'decky-plugins': 'Decky Loader plugins worth installing, including VetTV-built ones.',

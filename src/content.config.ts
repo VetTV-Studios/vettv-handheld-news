@@ -1,6 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
-export const CATEGORIES = ['news','guides','reviews','decky-plugins','project-updates','cloud-gaming','steam-deals','retro-emulation'] as const;
+export const CATEGORIES = ['news','steamos-news','guides','reviews','decky-plugins','project-updates','cloud-gaming','steam-deals','retro-emulation'] as const;
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
   schema: z.object({
