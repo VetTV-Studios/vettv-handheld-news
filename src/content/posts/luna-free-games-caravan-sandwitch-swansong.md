@@ -6,7 +6,7 @@ seoTitle: "Luna Free Games: Caravan SandWitch and Swansong With Prime"
 pubDate: 2026-10-19
 publishedAt: 2026-10-19T05:13:08.070Z
 author: "Vet, VetTV Handheld"
-category: retro-emulation-cloud
+category: news
 tags: ["amazon-luna","prime-gaming","free-games","pc-gaming","handheld-gaming"]
 cover: "covers/luna-free-games-caravan-sandwitch-swansong.jpg"
 sources:
