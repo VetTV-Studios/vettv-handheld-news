@@ -38,6 +38,7 @@ const map = {
   'luna-free-games-caravan-sandwitch-swansong': { dir: '/workspace/vettv-articles', cat: 'cloud-gaming', cover: 'luna-free-games-caravan-sandwitch-swansong' },
   'steamos-proton-daily-2026-10-19': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steamos-proton-daily-2026-10-19' },
   'double-fine-humble-bundle-steam-deck': { dir: '/workspace/vettv-articles', cat: 'steam-deals', cover: 'double-fine-humble-bundle-steam-deck' },
+  'xbox-ai-strategy-sharma-labs-stirrup': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'xbox-ai-strategy-sharma-labs-stirrup', offTopic: true },
 };
 // Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, else News.
 const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
