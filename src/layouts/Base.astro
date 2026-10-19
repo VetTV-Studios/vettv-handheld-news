@@ -1,16 +1,17 @@
 ---
-import { SITE, CATS, url, asset } from '../site';
+import { SITE, CATS, CAT_DESC, url, asset } from '../site';
 import '../styles/global.css';
 import Subscribe from '../components/Subscribe.astro';
 const { title, seoTitle, description = SITE.tagline, image, type = 'website', active = '' } = Astro.props;
 const fullTitle = seoTitle ? `${seoTitle} | ${SITE.name}` : title ? `${title} | ${SITE.name}` : SITE.name;
+const isHome = Astro.url.pathname.replace(/\/$/, '') === import.meta.env.BASE_URL.replace(/\/$/, '');
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const og = new URL(asset(image || 'art/banner_2560x1440.png'), Astro.site);
 ---
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
@@ -29,14 +30,20 @@ const og = new URL(asset(image || 'art/banner_2560x1440.png'), Astro.site);
   <div class="wrap bar">
     <a class="brand" href={url('')}><img src={asset('art/profile_800x800.png')} alt="" width="40" height="40" /><span>VetTV <b>Handheld</b> News</span></a>
     <form class="qs" action={url('search')} role="search"><input name="q" type="search" placeholder="Search…" aria-label="Search" /></form>
-    <button class="menu" aria-label="Menu" onclick="document.body.classList.toggle('nav-open')">☰</button>
+    <a class="m-only m-icon m-search" href={url('search')} aria-label="Search"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></a>
+    <button class="menu" aria-label="Menu" aria-controls="m-drawer" aria-expanded="false" onclick="vhnNav()">☰</button>
   </div>
   <nav class="cats"><div class="wrap">
     {Object.entries(CATS).map(([k, v]) => <a href={url(k)} class={active === k ? 'on' : ''}>{v}</a>)}
-    <a href={url('tags')} class={active === 'tags' ? 'on' : ''}>Tags</a>
-    <a href={url('subscribe')} class={`nav-sub ${active === 'subscribe' ? 'on' : ''}`}>Subscribe</a>
+    <a href={url('tags')} class={`c-extra ${active === 'tags' ? 'on' : ''}`}>Tags</a>
+    <a href={url('subscribe')} class={`c-extra nav-sub ${active === 'subscribe' ? 'on' : ''}`}>Subscribe</a>
   </div></nav>
 </header>
+<div class="m-only m-drawer" id="m-drawer" aria-label="Sections">
+  <p class="m-drawer-h">Sections</p>
+  {Object.entries(CATS).map(([k, v]) => <a class={`m-sec ${active === k ? 'on' : ''}`} href={url(k)}><b>{v}</b><small>{CAT_DESC[k]}</small></a>)}
+  <div class="m-drawer-links"><a href={url('tags')}>Tags</a><a href={url('subscribe')}>Subscribe</a><a href={asset('rss.xml')}>RSS</a><a href={SITE.youtube}>YouTube</a></div>
+</div>
 <main class="wrap"><slot /></main>
 <footer class="foot"><div class="wrap">
   {active !== 'subscribe' && <Subscribe id="foot-sub" compact />}
@@ -44,4 +51,15 @@ const og = new URL(asset(image || 'art/banner_2560x1440.png'), Astro.site);
   <p>© {new Date().getFullYear()} VetTV Studios · <a href={asset('rss.xml')}>RSS</a> · <a href={SITE.youtube}>YouTube</a> · <a href={url('search')}>Search</a> · <a href={url('subscribe')}>Subscribe</a></p>
   <p class="muted">Independent coverage. Not affiliated with Valve, Lenovo, or SteamDeckHQ.</p>
 </div></footer>
+<nav class="m-only m-tabbar" aria-label="Mobile">
+  <a href={url('')} class={isHome ? 'on' : ''}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></svg><span>Home</span></a>
+  <button type="button" onclick="vhnNav()" class={Object.keys(CATS).includes(active) ? 'on' : ''}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" fill="currentColor"/></svg><span>Sections</span></button>
+  <a href={url('search')} class={Astro.url.pathname.includes('/search') ? 'on' : ''}><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span>Search</span></a>
+  <a href={url('subscribe')} class={active === 'subscribe' ? 'on' : ''}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m3 6 9 7 9-7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg><span>Subscribe</span></a>
+</nav>
+<script is:inline>
+  function vhnNav(){var o=document.body.classList.toggle('nav-open');document.querySelectorAll('[aria-controls="m-drawer"]').forEach(function(b){b.setAttribute('aria-expanded',o)});}
+  addEventListener('keydown',function(e){if(e.key==='Escape')document.body.classList.remove('nav-open')});
+  (function(){var c=document.querySelector('.cats .wrap'),a=c&&c.querySelector('a.on');if(a&&matchMedia('(max-width:768px)').matches)c.scrollLeft+=a.getBoundingClientRect().left-c.getBoundingClientRect().left-16;})();
+</script>
 </body></html>

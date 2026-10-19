@@ -14,7 +14,7 @@ const rest = posts.filter(p => !top.has(p.id));
     <a class="hero-main" href={url(`posts/${hero.id}`)}>
       <div class="hero-img"><img src={asset(hero.data.cover || 'art/banner_2560x1440.png')} alt="" /></div>
       <div class="hero-txt">
-        <div class="meta"><span class="pill">{CATS[hero.data.category]}</span><time>{fmt(hero.data.pubDate)} · {hero.data.author}</time></div>
+        <div class="meta"><span class="m-only m-feat">★ Featured</span><span class="pill">{CATS[hero.data.category]}</span><time>{fmt(hero.data.pubDate)} · {hero.data.author}</time></div>
         <h1>{hero.data.title}</h1><p>{hero.data.description}</p>
       </div>
     </a>
@@ -22,6 +22,6 @@ const rest = posts.filter(p => !top.has(p.id));
   </section>
   <h2 class="sec">Latest</h2>
   <section class="grid">{rest.map(p => <Card post={p} />)}</section>
-  {Object.entries(CATS).map(([k, v]) => { const ps = posts.filter(p => p.data.category === k).slice(0, 4); return ps.length > 0 && (
-    <><h2 class="sec"><a href={url(k)}>{v} →</a></h2><section class="grid">{ps.map(p => <Card post={p} />)}</section></>); })}
+  <div class="home-cats">{Object.entries(CATS).map(([k, v]) => { const ps = posts.filter(p => p.data.category === k).slice(0, 4); return ps.length > 0 && (
+    <><h2 class="sec"><a href={url(k)}>{v} →</a></h2><section class="grid">{ps.map(p => <Card post={p} />)}</section></>); })}</div>
 </Base>
