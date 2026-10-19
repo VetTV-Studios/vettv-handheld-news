@@ -1,8 +1,8 @@
 ---
-title: "VetTV Channel Guide Dev Log: v1 Is Feature-Complete, and the First Deploy Is Next"
-description: "My retro cable-style TV guide for YouTube now works from start to finish. Here's what changed on October 19, what's still ahead, and the roadmap from v1.1 to v2."
-summary: "My retro cable-style TV guide for YouTube now works from start to finish. Here's what changed on October 19, what's still ahead, and the roadmap from v1.1 to v2."
-seoTitle: "VetTV Channel Guide Dev Log: v1 Feature-Complete, Deploy Next"
+title: "The VetTV Channel Guide Is Live: A Retro Cable-Style TV Guide for YouTube"
+description: "Version 1 of my retro cable-style TV guide for YouTube is now live, free and with no sign-up. Here's what changed on October 19 and the roadmap from v1.1 to v2."
+summary: "Version 1 of my retro cable-style TV guide for YouTube is now live, free and with no sign-up. Here's what changed on October 19 and the roadmap from v1.1 to v2."
+seoTitle: "VetTV Channel Guide Is Live: Retro Cable TV Guide for YouTube"
 pubDate: 2026-10-19
 publishedAt: 2026-10-19T18:04:04.143Z
 author: "Vet, VetTV Studios"
@@ -15,7 +15,9 @@ sources:
     url: "https://developers.google.com/youtube/iframe_api_reference"
 source: "Article Desk: vettv-channel-guide-status-oct-2026.md"
 ---
-Time for a status report on one of my VetTV Studios side projects: the VetTV Channel Guide. It's not live yet, but it hit a big milestone this week, and I want to walk you through where it stands.
+Time for a status report on one of my VetTV Studios side projects: the VetTV Channel Guide. As of October 19, 2026, at about 1:13 PM CT, it's live and public. It's free, and there's no sign-up.
+
+**Try it:** https://vettv-channel-guide.vercel.app
 
 ## What it is
 
@@ -33,7 +35,7 @@ You aren't stuck with my picks, either. You can paste in your own YouTube channe
 
 ## Under the hood
 
-The Guide is built with Next.js and TypeScript. The plan is to host it on Vercel.
+The Guide is built with Next.js and TypeScript and is hosted on Vercel.
 
 ## What happened on October 19
 
@@ -47,13 +49,12 @@ After the fix, browser testing confirmed that LGR, NASA, an imported channel and
 
 ## Where it stands
 
-Version 1 is feature-complete and working in the main codebase. Here's the honest part: **it isn't live yet.** There's no public URL, so you can't use it today. The next step is the first deploy to Vercel.
+Version 1 is live. I checked it on the public site: the 21-channel grid is there, playback works (I tried LGR, NASA and an imported playlist), and channels you import are saved in your browser.
 
 ## What's next
 
 Here's the roadmap. These are plans, not promises, and there are no dates attached.
 
-- **First deploy:** Get v1 onto Vercel.
 - **v1.1:** Add YouTube Data API lookups and refresh the curated default channels.
 - **v1.2:** Add Guide Central, a time-grid view, plus a 90s-style nostalgia scroll channel.
 - **v2:** Add accounts and an optional paid supporter tier.
@@ -62,7 +63,7 @@ The free version comes first. The supporter tier is planned as optional and come
 
 ## My take
 
-This one's been a blast to build. The CRT glow and channel bugs are pure nostalgia for me, and finally seeing an imported playlist play from start to finish after chasing that empty-video-ID bug felt great. Next up is getting it online. I'll post again when the first deploy happens.
+This one's been a blast to build. The CRT glow and channel bugs are pure nostalgia for me, and finally seeing an imported playlist play from start to finish after chasing that empty-video-ID bug felt great. Now it's out there, and I'd love for you to give it a spin. I'll post again when v1.1 lands.
 
 ---
 
