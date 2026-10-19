@@ -1,7 +1,7 @@
 export const SITE = { name: 'VetTV Handheld News', tagline: 'Steam Deck, Legion Go & handheld PC news, guides and reviews', youtube: 'https://youtube.com/@VetTVHandheld' };
 export const CATS: Record<string, string> = {
   'news': 'News', 'guides': 'Guides', 'reviews': 'Reviews', 'decky-plugins': 'Decky Plugins',
-  'project-updates': 'Project Updates', 'retro-emulation-cloud': 'Retro / Emulation / Cloud',
+  'project-updates': 'Project Updates', 'cloud-gaming': 'Cloud Gaming', 'retro-emulation': 'Retro & Emulation',
 };
 export const url = (p = '') => { const b = import.meta.env.BASE_URL.replace(/\/$/, ''); p = p.replace(/^\/|\/$/g, ''); return p ? `${b}/${p}/` : `${b}/`; };
 export const asset = (p: string) => import.meta.env.BASE_URL.replace(/\/$/, '') + '/' + p.replace(/^\//, '');
@@ -11,3 +11,12 @@ type P = { id: string; data: { pubDate: Date; publishedAt?: Date; order?: number
 export const sortPosts = <T extends P>(p: T[]) => p.sort((a, b) =>
   (+b.data.pubDate - +a.data.pubDate) || ((b.data.order ?? 0) - (a.data.order ?? 0)) ||
   ((+(b.data.publishedAt ?? 0)) - (+(a.data.publishedAt ?? 0))) || a.id.localeCompare(b.id));
+export const CAT_DESC: Record<string, string> = {
+  'news': 'The latest from Steam Deck, Legion Go, SteamOS, Proton and the wider handheld PC scene.',
+  'guides': 'Step-by-step help for setting up, tuning and getting more out of your handheld.',
+  'reviews': 'Hands-on verdicts on handhelds, accessories and the games that run on them.',
+  'decky-plugins': 'Decky Loader plugins worth installing, including VetTV-built ones.',
+  'project-updates': "Progress reports from VetTV's own builds and experiments.",
+  'cloud-gaming': 'Stream it, don\'t install it. News, tests and deals for Amazon Luna, Xbox Cloud Gaming, GeForce NOW and Boosteroid, with a handheld player\'s eye on latency, battery and what actually runs.',
+  'retro-emulation': 'Classic games, emulators, compatibility layers and the old-school tech that keeps them running.',
+};

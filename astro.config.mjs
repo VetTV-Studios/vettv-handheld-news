@@ -6,5 +6,7 @@ export default defineConfig({
   site: 'https://vettv-studios.github.io',
   base: '/vettv-handheld-news',
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  // Old section slug (renamed Oct 19, 2026) keeps working.
+  redirects: { '/retro-emulation-cloud': '/vettv-handheld-news/retro-emulation/' },
+  integrations: [sitemap({ filter: (page) => !page.includes('/retro-emulation-cloud') })],
 });

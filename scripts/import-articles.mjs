@@ -7,7 +7,7 @@ const COV = new URL('../public/covers/', import.meta.url).pathname;
 const map = {
   'steamos-3-9-2-beta-legion-go': { cat: 'news', tags: ['steamos','legion-go','beta'], cover: 'steamos-3-9-2', featured: true },
   'steamos-proton-daily-2026-10-13': { cat: 'news', tags: ['steamos','proton','steam-deck','remote-play'], cover: 'steamos-proton-daily-2026-10-13' },
-  'planet-zoo-2-geforce-now': { cat: 'retro-emulation-cloud', tags: ['cloud-gaming','geforce-now','planet-zoo-2'], cover: 'planet-zoo-2' },
+  'planet-zoo-2-geforce-now': { cat: 'cloud-gaming', tags: ['cloud-gaming','geforce-now','planet-zoo-2'], cover: 'planet-zoo-2' },
   'oclp-3-0-0-rc3-hackintosh': { cat: 'project-updates', tags: ['macos','oclp','hackintosh'], cover: 'oclp-3-0-0-rc3' },
   'steamos-legion-go-setup-guide': { cat: 'guides', cover: 'steamos-legion-go-setup-guide' },
   'steamos-handheld-performance-battery-tuning': { cat: 'guides', cover: 'steamos-handheld-performance-battery-tuning' },
@@ -30,14 +30,17 @@ const map = {
   'steam-frame-steamvr-2026-10-17': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steam-frame-steamvr-2026-10-17' },
   'jamie-craven-spedley-securities': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'jamie-craven-spedley-securities', offTopic: true },
   'windows-11-gaming-task-view-run-dialog': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'windows-11-gaming-task-view-run-dialog' },
-  'windows-11-ms-dos-8-3-file-names': { dir: '/workspace/vettv-articles', cat: 'retro-emulation-cloud', cover: 'windows-11-ms-dos-8-3-file-names', offTopic: true },
-  'reactos-nt6-users-folder': { dir: '/workspace/vettv-articles', cat: 'retro-emulation-cloud', cover: 'reactos-nt6-users-folder', offTopic: true },
+  'windows-11-ms-dos-8-3-file-names': { dir: '/workspace/vettv-articles', cat: 'retro-emulation', cover: 'windows-11-ms-dos-8-3-file-names', offTopic: true },
+  'reactos-nt6-users-folder': { dir: '/workspace/vettv-articles', cat: 'retro-emulation', cover: 'reactos-nt6-users-folder', offTopic: true },
   'legion-go-s-steamos-deal-best-buy': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'legion-go-s-steamos-deal-best-buy' },
   'gta-6-ps5-install-size-rumor': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'gta-6-ps5-install-size-rumor', offTopic: true },
   'disney-character-ai-hiring': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'disney-character-ai-hiring', offTopic: true },
   'luna-free-games-caravan-sandwitch-swansong': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'luna-free-games-caravan-sandwitch-swansong' },
   'steamos-proton-daily-2026-10-19': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steamos-proton-daily-2026-10-19' },
 };
+// Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, else News.
+const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
+const autoCat = (tags, title) => (tags.some(t => CLOUD.test(t.replace(/-/g, ' '))) || CLOUD.test(title)) ? 'cloud-gaming' : 'news';
 const q = s => JSON.stringify(s);
 const only = process.argv.slice(2);
 for (const [slug, m] of Object.entries(map)) {
@@ -65,7 +68,7 @@ for (const [slug, m] of Object.entries(map)) {
   const src = path.join(SRC, m.cover + '-cover-pickax-1920x1080.jpg');
   let cover; if (fs.existsSync(src)) { fs.copyFileSync(src, path.join(COV, slug + '.jpg')); cover = `covers/${slug}.jpg`; }
   const fm = ['---', `title: ${q(title)}`, `description: ${q(desc)}`, `summary: ${q(desc)}`, seoTitle ? `seoTitle: ${q(seoTitle)}` : '', `pubDate: ${date}`, `publishedAt: ${new Date(fs.statSync(f).mtimeMs).toISOString()}`, `author: ${q(author)}`,
-    `category: ${m.cat}`, `tags: ${q(m.tags)}`, cover ? `cover: ${q(cover)}` : '', m.featured ? 'featured: true' : '', m.offTopic ? 'offTopic: true' : '',
+    `category: ${m.cat || autoCat(m.tags, title)}`, `tags: ${q(m.tags)}`, cover ? `cover: ${q(cover)}` : '', m.featured ? 'featured: true' : '', m.offTopic ? 'offTopic: true' : '',
     sources.length ? 'sources:\n' + sources.map(x => `  - title: ${q(x.title)}\n    url: ${q(x.url)}`).join('\n') : '',
     `source: ${q('Article Desk: ' + slug + '.md')}`, '---', ''].filter(Boolean).join('\n');
   fs.writeFileSync(path.join(OUT, slug + '.md'), fm + '\n' + body + '\n');

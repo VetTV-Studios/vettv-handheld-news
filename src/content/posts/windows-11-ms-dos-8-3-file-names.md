@@ -6,7 +6,7 @@ seoTitle: "Why Windows 11 Still Uses MS-DOS 8.3 File Names (PROGRA~1)"
 pubDate: 2026-10-18
 publishedAt: 2026-10-18T11:05:38-05:00
 author: "Vet, VetTV Handheld"
-category: retro-emulation-cloud
+category: retro-emulation
 tags: ["windows-11","ms-dos","ntfs","pc-gaming","retro-gaming"]
 cover: "covers/windows-11-ms-dos-8-3-file-names.jpg"
 offTopic: true
