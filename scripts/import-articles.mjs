@@ -32,6 +32,9 @@ const map = {
   'windows-11-gaming-task-view-run-dialog': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'windows-11-gaming-task-view-run-dialog' },
   'windows-11-ms-dos-8-3-file-names': { dir: '/workspace/vettv-articles', cat: 'retro-emulation-cloud', cover: 'windows-11-ms-dos-8-3-file-names', offTopic: true },
   'reactos-nt6-users-folder': { dir: '/workspace/vettv-articles', cat: 'retro-emulation-cloud', cover: 'reactos-nt6-users-folder', offTopic: true },
+  'legion-go-s-steamos-deal-best-buy': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'legion-go-s-steamos-deal-best-buy' },
+  'gta-6-ps5-install-size-rumor': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'gta-6-ps5-install-size-rumor', offTopic: true },
+  'disney-character-ai-hiring': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'disney-character-ai-hiring', offTopic: true },
 };
 const q = s => JSON.stringify(s);
 const only = process.argv.slice(2);
@@ -49,8 +52,9 @@ for (const [slug, m] of Object.entries(map)) {
     if (by) { author = by[1]; const d = new Date(by[2] + ' 12:00'); if (!isNaN(d)) date = d.toISOString().slice(0,10); i++; break; }
     if (l && title && desc) break;
   }
-  if (!m.tags) { const c = path.join(SRC, slug + '.captions.md'); const t = fs.existsSync(c) && fs.readFileSync(c, 'utf8').match(/## Pickax tags\s*\n+([^\n]+)/);
-    m.tags = t ? t[1].split(',').map(x => x.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).filter(Boolean) : []; }
+  if (!m.tags) { const c = path.join(SRC, slug + '.captions.md'); const blk = fs.existsSync(c) && fs.readFileSync(c, 'utf8').match(/## Pickax tags[^\n]*\n+((?:(?!#)[^\n]*\n?)+)/);
+    const raw = blk ? (/^\s*[-*]\s/m.test(blk[1]) ? blk[1].split('\n').filter(l => /^\s*[-*]\s/.test(l)).map(l => l.replace(/^\s*[-*]\s+/, '')) : blk[1].split('\n')[0].split(',')) : [];
+    m.tags = raw.map(x => x.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).filter(Boolean); }
   const capF = path.join(SRC, slug + '.captions.md'); const cap = fs.existsSync(capF) ? fs.readFileSync(capF, 'utf8') : '';
   const seo = cap.match(/## SEO title[^\n]*\n+([^\n]+)/); const seoTitle = seo ? seo[1].trim() : '';
   const sources = []; const si = lines.findIndex(l => /^##\s+Sources/i.test(l));
