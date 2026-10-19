@@ -2,6 +2,7 @@
 title: "SteamOS Handheld Tuning: Getting More Battery and Smoother Frames"
 description: "A practical guide to SteamOS's Performance menu on PC handhelds: frame limits, refresh rate, VRR, TDP, and GPU clocks, with what's verified and what varies by device."
 pubDate: 2026-10-13
+publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV Handheld"
 category: guides
 tags: ["steamos","handheld-gaming","battery-life","performance","legion-go"]

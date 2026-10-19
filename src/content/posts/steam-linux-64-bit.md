@@ -3,6 +3,7 @@ title: "Steam on Linux Goes 64-Bit, Running Inside a Steam Runtime Container"
 description: "Valve's October 15 Steam client beta moves the Linux client to 64-bit inside the same container tech Steam games use. It also adds Achievement Sets and a Remote Play Display Style setting."
 summary: "Valve's October 15 Steam client beta moves the Linux client to 64-bit inside the same container tech Steam games use. It also adds Achievement Sets and a Remote Play Display Style setting."
 pubDate: 2026-10-17
+publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["steam","linux-gaming","steamos","steam-deck","achievements"]

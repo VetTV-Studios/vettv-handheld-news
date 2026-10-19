@@ -4,6 +4,7 @@ description: "A newly merged change moves ReactOS to the Windows Vista-style fol
 summary: "A newly merged change moves ReactOS to the Windows Vista-style folder layout. It's in nightly development builds, not a release, and it's one more step in the project's slow move toward NT6 (Vista and 7) compatibility."
 seoTitle: "ReactOS Moves to C:\\Users: What the NT6 Folder Change Means"
 pubDate: 2026-10-18
+publishedAt: 2026-10-18T14:27:18-05:00
 author: "Vet, VetTV Handheld"
 category: retro-emulation-cloud
 tags: ["reactos","open-source","windows-compatibility","operating-systems","retro-computing"]

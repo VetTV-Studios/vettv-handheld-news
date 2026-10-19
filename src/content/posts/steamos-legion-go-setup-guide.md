@@ -2,6 +2,7 @@
 title: "How to Install SteamOS on the Original Lenovo Legion Go"
 description: "A step-by-step guide to installing Valve's own SteamOS on the first-gen Legion Go, from the recovery USB and BIOS settings to first boot, Decky Loader, and what to expect."
 pubDate: 2026-10-13
+publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV Handheld"
 category: guides
 tags: ["steamos","legion-go","handheld-gaming","guides","decky-loader"]

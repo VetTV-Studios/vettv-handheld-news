@@ -2,6 +2,7 @@
 title: "Deck Live: I Built a Decky Plugin to Stream Straight From Game Mode"
 description: "Version 1.0.0 of my Decky Loader plugin streams gameplay to YouTube or Twitch from the Quick Access menu, with no Desktop Mode, no OBS, and no extra PC."
 pubDate: 2026-10-13
+publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV Handheld"
 category: decky-plugins
 tags: ["decky-loader","deck-live","livestreaming","legion-go","plugins"]

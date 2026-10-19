@@ -2,6 +2,7 @@
 title: "Steam Frame Gets SteamOS 0.4: Better Battery, Cleaner Streaming, and SteamVR 2.18.3 Beta"
 description: "Valve's latest Steam Frame update promises up to 12% better battery life, fixes streaming color clarity, and publishes CAD files for mods, while the SteamVR 2.18.3 beta makes the Frame's controllers act as a gamepad in VR games without VR controls."
 pubDate: 2026-10-13
+publishedAt: 2026-10-17T20:54:18-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["steam-frame","steamvr","steamos","virtual-reality","valve"]

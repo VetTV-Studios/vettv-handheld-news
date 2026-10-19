@@ -2,6 +2,7 @@
 title: "Planet Zoo 2 Is Out Now, and It's on GeForce NOW Day One"
 description: "Frontier's new zoo sim launched October 13 on PC, PS5, and Xbox Series X|S, and both Frontier and NVIDIA say you can stream it from day one. Here's what to know before you build your first zoo in the cloud."
 pubDate: 2026-10-13
+publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV Handheld"
 category: retro-emulation-cloud
 tags: ["cloud-gaming","geforce-now","planet-zoo-2"]

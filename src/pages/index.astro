@@ -3,15 +3,20 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro'; import Card from '../components/Card.astro';
 import { CATS, url, asset, fmt, sortPosts } from '../site';
 const posts = sortPosts(await getCollection('posts'));
-const hero = posts.find(p => p.data.featured) ?? posts[0];
-const rest = posts.filter(p => p !== hero);
-const side = rest.slice(0, 3);
+// Hero + side slots prefer on-topic, non-sample posts (newest first); off-topic only fills gaps.
+const pref = [...posts.filter(p => !p.data.offTopic && !p.data.sample), ...posts.filter(p => p.data.offTopic || p.data.sample)];
+const [hero, ...side] = pref.slice(0, 5);
+const top = new Set([hero, ...side].map(p => p.id));
+const rest = posts.filter(p => !top.has(p.id));
 ---
 <Base>
   <section class="hero">
-    <a class="hero-main" href={url(`posts/${hero.id}`)} style={`background-image:linear-gradient(180deg,transparent 30%,#14061fee),url(${asset(hero.data.cover || 'art/banner_2560x1440.png')})`}>
-      <span class="pill">{CATS[hero.data.category]}</span>
-      <h1>{hero.data.title}</h1><p>{hero.data.description}</p><time>{fmt(hero.data.pubDate)} · {hero.data.author}</time>
+    <a class="hero-main" href={url(`posts/${hero.id}`)}>
+      <div class="hero-img"><img src={asset(hero.data.cover || 'art/banner_2560x1440.png')} alt="" /></div>
+      <div class="hero-txt">
+        <div class="meta"><span class="pill">{CATS[hero.data.category]}</span><time>{fmt(hero.data.pubDate)} · {hero.data.author}</time></div>
+        <h1>{hero.data.title}</h1><p>{hero.data.description}</p>
+      </div>
     </a>
     <div class="hero-side">{side.map(p => <Card post={p} />)}</div>
   </section>

@@ -4,6 +4,7 @@ description: "Court filings show Disney offered jobs to dozens of Character.AI e
 summary: "Court filings show Disney offered jobs to dozens of Character.AI employees and bid $20 million for a non-exclusive license to some of its technology. The deal still faces a court-supervised auction and a judge's approval."
 seoTitle: "Disney to Hire Most of Character.AI's Staff After Bankruptcy"
 pubDate: 2026-10-18
+publishedAt: 2026-10-18T19:17:40-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["disney","character-ai","artificial-intelligence","tech-news","bankruptcy"]

@@ -2,6 +2,7 @@
 title: "SteamOS & Proton Evening: Big Steam Client Stable Update, GE-Proton11-8 and 11-9"
 description: "Tuesday, October 13, 2026. Valve shipped a huge Steam client update to the Stable channel with Proton by default, a new compatibility tool picker, Big Art Mode, screensavers, and the Pyrowave Remote Play codec. GE-Proton released two versions in one day."
 pubDate: 2026-10-13
+publishedAt: 2026-10-17T20:54:18-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["steamos","proton","steam-deck","ge-proton","legion-go"]

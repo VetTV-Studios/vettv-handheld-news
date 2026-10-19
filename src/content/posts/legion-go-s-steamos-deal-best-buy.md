@@ -4,6 +4,7 @@ description: "The higher-end SteamOS Legion Go S is $580 under Best Buy's listed
 summary: "The higher-end SteamOS Legion Go S is $580 under Best Buy's listed comparison price. That's real savings against today's prices, but it's still above what this model cost at launch in 2025."
 seoTitle: "Legion Go S SteamOS Z1 Extreme Deal: $999.99 at Best Buy"
 pubDate: 2026-10-18
+publishedAt: 2026-10-18T19:14:33-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["legion-go-s","steamos","handheld-gaming","deals","lenovo"]

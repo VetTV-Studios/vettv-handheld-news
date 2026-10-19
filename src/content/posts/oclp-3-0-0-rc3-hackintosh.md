@@ -2,6 +2,7 @@
 title: "OpenCore Legacy Patcher 3.0.0-rc.3: Tahoe Is Close, But Read This Before You Patch"
 description: "OCLP's third release candidate brings macOS Tahoe support, new Wi-Fi and non-Metal patches, and FileVault on macOS 26. Here's what it means for my 2015 iMac, and why Hackintosh users need to be careful."
 pubDate: 2026-10-13
+publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV"
 category: project-updates
 tags: ["macos","oclp","hackintosh"]

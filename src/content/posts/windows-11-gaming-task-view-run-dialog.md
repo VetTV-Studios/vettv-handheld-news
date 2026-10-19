@@ -4,6 +4,7 @@ description: "Experimental build 26340.9750 gives Gaming Task View in Xbox mode 
 summary: "Experimental build 26340.9750 gives Gaming Task View in Xbox mode a navigation bar with Exit to Desktop and Power Options, and the same change is in Beta build 26220.9739. The build also polishes the opt-in modern Run dialog and lets Windows Hello brighten the screen in the dark."
 seoTitle: "Windows 11 Build 26340.9750: Xbox Mode Gaming Task View and Run"
 pubDate: 2026-10-18
+publishedAt: 2026-10-18T10:33:30-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["windows-11","xbox-mode","pc-gaming","windows-insider","gaming-handhelds"]

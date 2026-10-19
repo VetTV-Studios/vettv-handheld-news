@@ -3,6 +3,7 @@ title: "ROG Xbox Ally X20 Is Out Today: OLED, Ryzen AI Z2 Extreme, $1,299"
 description: "ASUS's 20th-anniversary Xbox Ally adds a 7.4-inch OLED, 24GB of RAM and a 1TB SSD. Here's how it compares on paper to my original Legion Go, and where SteamOS stands."
 summary: "ASUS's 20th-anniversary Xbox Ally adds a 7.4-inch OLED, 24GB of RAM and a 1TB SSD. Here's how it compares on paper to my original Legion Go, and where SteamOS stands."
 pubDate: 2026-10-15
+publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["rog-xbox-ally","asus-rog","handheld-gaming","xbox","steamos"]

@@ -2,6 +2,7 @@
 title: "WinUI Gallery 3.0 Goes Experimental: TableView, Charts, Inking, and More"
 description: "Microsoft's showcase app for WinUI 3 now runs on the experimental Windows App SDK 2.5.4, so developers can try upcoming controls and send feedback before the APIs are locked."
 pubDate: 2026-10-13
+publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV"
 category: news
 tags: ["windows","winui","dev"]

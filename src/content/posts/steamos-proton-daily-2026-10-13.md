@@ -2,6 +2,7 @@
 title: "SteamOS & Proton Daily: Steam Deck Streaming Fixes, Proton by Default, and a Prefix Bug Squashed"
 description: "Tuesday, October 13, 2026. This week's Steam client betas fix HEVC streaming to the Deck, Windows programs you add to Steam now use Proton by default, and Proton Experimental fixes a rare bug where controllers stopped being detected."
 pubDate: 2026-10-13
+publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["steamos","proton","steam-deck","remote-play"]

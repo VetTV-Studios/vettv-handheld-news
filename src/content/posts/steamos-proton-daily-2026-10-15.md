@@ -3,6 +3,7 @@ title: "SteamOS & Proton Watch: Epic's Launcher Comes to Linux, and Fortnite Is 
 description: "Epic has a native Linux launcher preview and a rebuilt Easy Anti-Cheat, but says the Steam Deck can't run it yet. Plus GE-Proton in Epic's launcher, a bleeding-edge nvapi change, and this week's Deck ratings."
 summary: "Epic has a native Linux launcher preview and a rebuilt Easy Anti-Cheat, but says the Steam Deck can't run it yet. Plus GE-Proton in Epic's launcher, a bleeding-edge nvapi change, and this week's Deck ratings."
 pubDate: 2026-10-15
+publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["steamos","proton","linux-gaming","epic-games","steam-deck"]

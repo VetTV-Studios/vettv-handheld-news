@@ -4,6 +4,7 @@ description: "A widely shared claim about GTA 6's file size traces back to a lea
 summary: "A widely shared claim about GTA 6's file size traces back to a leaker describing a development build, not the retail game. Rockstar and Sony haven't announced an install size, so treat 200GB as unconfirmed."
 seoTitle: "GTA 6 PS5 Size Rumor: Is It Really 200GB? What's Confirmed"
 pubDate: 2026-10-18
+publishedAt: 2026-10-18T19:15:59-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["gta-6","playstation-5","rockstar-games","gaming-news","rumors"]

@@ -2,6 +2,7 @@
 title: "Steam Frame Backorders Stretch Into 2027: What Your Reservation Means"
 description: "Valve now shows reservation holders whether their purchase email arrives \"by December\" or \"in 2027.\" Here's how the queue works, the 72-hour rule, and what it means for the waitlist."
 pubDate: 2026-10-13
+publishedAt: 2026-10-17T20:54:18-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["steam-frame","valve","virtual-reality","preorders","vr-headsets"]

@@ -4,6 +4,7 @@ description: "A Windows Latest piece revisits Raymond Chen's explanation of why 
 summary: "A Windows Latest piece revisits Raymond Chen's explanation of why core Windows files still fit the old 8.3 naming rule. Here's what Microsoft's own posts and documentation actually say, and where gamers might run into it."
 seoTitle: "Why Windows 11 Still Uses MS-DOS 8.3 File Names (PROGRA~1)"
 pubDate: 2026-10-18
+publishedAt: 2026-10-18T11:05:38-05:00
 author: "Vet, VetTV Handheld"
 category: retro-emulation-cloud
 tags: ["windows-11","ms-dos","ntfs","pc-gaming","retro-gaming"]

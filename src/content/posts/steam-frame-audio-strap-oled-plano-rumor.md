@@ -3,6 +3,7 @@ title: "Steam Frame Upgrades: Valve's Audio Strap, an OLED \"Plano\" Rumor, and 
 description: "Valve has confirmed a premium strap with a hot-swap battery and Index-style speakers, but hasn't given a price or date. Kernel code also hints at an OLED Frame. Here's what's confirmed and what isn't."
 summary: "Valve has confirmed a premium strap with a hot-swap battery and Index-style speakers, but hasn't given a price or date. Kernel code also hints at an OLED Frame. Here's what's confirmed and what isn't."
 pubDate: 2026-10-15
+publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["steam-frame","valve","virtual-reality","steamvr","sidequest"]

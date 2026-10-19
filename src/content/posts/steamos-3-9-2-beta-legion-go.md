@@ -2,6 +2,7 @@
 title: "SteamOS 3.9.2 Beta: What's New for the Legion Go Crowd"
 description: "Valve's latest beta finally gives the Legion Go 2 native brightness control, rebases on Linux 7.2, and brings Plasma 6.7 to Desktop Mode. Here's what matters if you run SteamOS on something other than a Deck."
 pubDate: 2026-10-13
+publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["steamos","legion-go","beta"]

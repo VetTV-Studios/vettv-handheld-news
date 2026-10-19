@@ -3,6 +3,7 @@ title: "More Gmail Users Can Now Use Gemini to Skim Work Emails"
 description: "Google is rolling out Gmail's AI Inbox and Gmail Live to paid Workspace accounts. Here are the exact plans, dates and limits."
 summary: "Google is rolling out Gmail's AI Inbox and Gmail Live to paid Workspace accounts. Here are the exact plans, dates and limits."
 pubDate: 2026-10-17
+publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
 category: news
 tags: ["gmail","gemini","google-workspace","ai","productivity"]
