@@ -35,6 +35,7 @@ const map = {
   'legion-go-s-steamos-deal-best-buy': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'legion-go-s-steamos-deal-best-buy' },
   'gta-6-ps5-install-size-rumor': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'gta-6-ps5-install-size-rumor', offTopic: true },
   'disney-character-ai-hiring': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'disney-character-ai-hiring', offTopic: true },
+  'luna-free-games-caravan-sandwitch-swansong': { dir: '/workspace/vettv-articles', cat: 'retro-emulation-cloud', cover: 'luna-free-games-caravan-sandwitch-swansong' },
 };
 const q = s => JSON.stringify(s);
 const only = process.argv.slice(2);
