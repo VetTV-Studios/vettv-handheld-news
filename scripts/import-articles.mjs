@@ -35,7 +35,7 @@ const map = {
   'legion-go-s-steamos-deal-best-buy': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'legion-go-s-steamos-deal-best-buy' },
   'gta-6-ps5-install-size-rumor': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'gta-6-ps5-install-size-rumor', offTopic: true },
   'disney-character-ai-hiring': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'disney-character-ai-hiring', offTopic: true },
-  'luna-free-games-caravan-sandwitch-swansong': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'luna-free-games-caravan-sandwitch-swansong' },
+  'luna-free-games-caravan-sandwitch-swansong': { dir: '/workspace/vettv-articles', cat: 'cloud-gaming', cover: 'luna-free-games-caravan-sandwitch-swansong' },
   'steamos-proton-daily-2026-10-19': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steamos-proton-daily-2026-10-19' },
 };
 // Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, else News.
