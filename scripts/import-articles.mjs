@@ -40,6 +40,7 @@ const map = {
   'double-fine-humble-bundle-steam-deck': { dir: '/workspace/vettv-articles', cat: 'steam-deals', cover: 'double-fine-humble-bundle-steam-deck' },
   'xbox-ai-strategy-sharma-labs-stirrup': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'xbox-ai-strategy-sharma-labs-stirrup', offTopic: true },
   'steam-beta-linux-alt-tab-fix-incomplete': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steam-beta-linux-alt-tab-fix-incomplete' },
+  'xodus-nexus-game-pass-steam-deck': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'xodus-nexus-game-pass-steam-deck' },
 };
 // Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, else News.
 const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
