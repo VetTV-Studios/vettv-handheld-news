@@ -44,6 +44,8 @@ const map = {
   'vettv-retro-os-progress-update-oct-2026': { dir: '/workspace/vettv-articles', cat: 'project-updates', cover: 'vettv-retro-os-progress-update-oct-2026', offTopic: true },
   'vettv-channel-guide-status-oct-2026': { dir: '/workspace/vettv-articles', cat: 'project-updates', cover: 'vettv-channel-guide-status-oct-2026', offTopic: true },
   'ge-proton11-11-release': { dir: '/workspace/vettv-articles', cat: 'steamos-news', cover: 'ge-proton11-11-release' },
+  'steamos-3-9-stable-daily-2026-10-24': { dir: '/workspace/vettv-articles', cat: 'steamos-news', cover: 'steamos-3-9-stable-daily-2026-10-24', order: 1 },
+  'steam-frame-steamvr-2026-10-24': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steam-frame-steamvr-2026-10-24' },
 };
 // Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, a 'steamos-news' tag -> SteamOS News, else News.
 const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
@@ -75,7 +77,7 @@ for (const [slug, m] of Object.entries(map)) {
   const src = path.join(SRC, m.cover + '-cover-pickax-1920x1080.jpg');
   let cover; if (fs.existsSync(src)) { fs.copyFileSync(src, path.join(COV, slug + '.jpg')); cover = `covers/${slug}.jpg`; }
   const fm = ['---', `title: ${q(title)}`, `description: ${q(desc)}`, `summary: ${q(desc)}`, seoTitle ? `seoTitle: ${q(seoTitle)}` : '', `pubDate: ${date}`, `publishedAt: ${new Date(fs.statSync(f).mtimeMs).toISOString()}`, `author: ${q(author)}`,
-    `category: ${m.cat || autoCat(m.tags, title)}`, `tags: ${q(m.tags)}`, cover ? `cover: ${q(cover)}` : '', m.featured ? 'featured: true' : '', m.offTopic ? 'offTopic: true' : '',
+    `category: ${m.cat || autoCat(m.tags, title)}`, `tags: ${q(m.tags)}`, cover ? `cover: ${q(cover)}` : '', m.featured ? 'featured: true' : '', m.order ? `order: ${m.order}` : '', m.offTopic ? 'offTopic: true' : '',
     sources.length ? 'sources:\n' + sources.map(x => `  - title: ${q(x.title)}\n    url: ${q(x.url)}`).join('\n') : '',
     `source: ${q('Article Desk: ' + slug + '.md')}`, '---', ''].filter(Boolean).join('\n');
   fs.writeFileSync(path.join(OUT, slug + '.md'), fm + '\n' + body + '\n');
