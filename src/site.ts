@@ -1,6 +1,6 @@
 export const SITE = { name: 'VetTV Handheld News', tagline: 'Steam Deck, Legion Go & handheld PC news, guides and reviews', youtube: 'https://youtube.com/@VetTVHandheld' };
 export const CATS: Record<string, string> = {
-  'news': 'News', 'steamos-news': 'SteamOS News', 'guides': 'Guides', 'reviews': 'Reviews', 'decky-plugins': 'Decky Plugins', 'windows': 'Windows', 'reactos-open-nt': 'ReactOS & Open NT',
+  'news': 'News', 'steamos-news': 'SteamOS News', 'guides': 'Guides', 'reviews': 'Reviews', 'decky-plugins': 'Decky Plugins', 'handhelds': 'Handhelds', 'windows': 'Windows', 'reactos-open-nt': 'ReactOS & Open NT',
   'project-updates': 'Project Updates', 'cloud-gaming': 'Cloud Gaming', 'steam-deals': 'Steam Deals', 'retro-emulation': 'Retro & Emulation',
 };
 export const url = (p = '') => { const b = import.meta.env.BASE_URL.replace(/\/$/, ''); p = p.replace(/^\/|\/$/g, ''); return p ? `${b}/${p}/` : `${b}/`; };
@@ -17,6 +17,7 @@ export const CAT_DESC: Record<string, string> = {
   'guides': 'Step-by-step help for setting up, tuning and getting more out of your handheld.',
   'reviews': 'Hands-on verdicts on handhelds, accessories and the games that run on them.',
   'decky-plugins': 'Decky Loader plugins worth installing, including VetTV-built ones.',
+  'handhelds': 'ROG Ally, Ally X and other Windows PC handhelds: drivers, tools and tweaks.',
   'windows': 'Windows 11, PC gaming and Xbox on PC.',
   'reactos-open-nt': 'Free, open Windows-compatible systems: ReactOS, its forks, and the people pushing them.',
   'project-updates': "Progress reports from VetTV's own builds and experiments.",

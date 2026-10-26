@@ -145,5 +145,5 @@ main{padding:24px 20px 48px}
 }
 @media (max-width:380px){.brand{font-size:.92rem;gap:6px}.brand img{width:30px;height:30px}.bar{gap:4px}}
 /* 11 sections: tighten nav at every desktop width so it stays on one row down to 1024px; 769-1023px scrolls sideways */
-@media (min-width:769px){.cats .wrap{gap:0}.cats a{padding:10px 6px;font-size:.8rem}}
-@media (min-width:769px) and (max-width:1179px){.cats .wrap{gap:0}.cats a{padding:10px 4px;font-size:.74rem;letter-spacing:-.005em}}
+@media (min-width:769px){.cats .wrap{gap:0}.cats a{padding:10px 4px;font-size:.76rem}}
+@media (min-width:769px) and (max-width:1179px){.cats .wrap{gap:0}.cats a{padding:10px 3px;font-size:.69rem;letter-spacing:-.005em}}
