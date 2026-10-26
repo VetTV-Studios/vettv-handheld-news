@@ -51,6 +51,7 @@ const map = {
   'reactos-community-roundup-2026-10-26': { dir: '/workspace/vettv-articles', cat: 'reactos-open-nt', tags: ['reactos','open-source','libernt','cusdeb-os','retro-computing'], cover: 'reactos-community-roundup-2026-10-26', offTopic: true, date: '2026-10-26', desk2: true, author: 'Vet, VetTV Studios' },
   'advanced-shader-delivery-all-rtx-2026-10': { dir: '/workspace/vettv-articles', cat: 'windows', tags: ['windows','advanced-shader-delivery','directx','pc-gaming','nvidia','windows-11'], cover: 'advanced-shader-delivery-all-rtx-2026-10', offTopic: true, date: '2026-10-26', desk2: true, author: 'Vet, VetTV Studios' },
   'windows-xbox-week-2026-10-26': { dir: '/workspace/vettv-articles', cat: 'windows', tags: ['windows','xbox','game-pass','id-xbox','windows-insider','arkane'], cover: 'windows-xbox-week-2026-10-26', offTopic: true, date: '2026-10-26', desk2: true, author: 'Vet, VetTV Studios', soften: [['](./advanced-shader-delivery-all-rtx-2026-10)', '](/vettv-handheld-news/posts/advanced-shader-delivery-all-rtx-2026-10/)']] },
+  'game-pass-october-wave-2-2026': { dir: '/workspace/vettv-articles', cat: 'windows', tags: ['windows','xbox-game-pass','final-fantasy-vii-remake','pc-game-pass','xbox','steam-deck'], cover: 'game-pass-october-wave-2-2026', offTopic: true, date: '2026-10-26', desk2: true, author: 'Vet, VetTV Studios', soften: [['](./windows-xbox-week-2026-10-26)', '](/vettv-handheld-news/posts/windows-xbox-week-2026-10-26/)']] },
 };
 // Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, a 'steamos-news' tag -> SteamOS News, else News.
 const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
@@ -66,7 +67,7 @@ for (const [slug, m] of Object.entries(map)) {
     for (const l of lines) { const t = l.trim();
       if (/^\*\*Alternate headlines/.test(t)) { skip = true; continue; } if (skip) { if (/^[-*]\s/.test(t)) continue; skip = false; }
       const sm = t.match(/^\*\*SEO title:\*\*\s*(.+)$/); if (sm) { seo2 = sm[1]; continue; }
-      if (/^\*\*Tags:\*\*/.test(t)) continue;
+      if (/^\*\*(Tags|Recommended section):\*\*/.test(t)) continue;
       if (/^\*By [^|]+\*$/.test(t)) { o.push(t.replace(/\*$/, ` | ${m.date}*`)); continue; }
       if (!dek && /^\*[^*].+[^*]\*$/.test(t) && !/^\*(By|Disclosure)/.test(t)) { dek = true; o.splice(1, 0, '### ' + t.slice(1, -1)); continue; }
       o.push(l); }
