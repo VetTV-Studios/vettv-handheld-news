@@ -15,7 +15,7 @@ const map = {
   'steamos-proton-evening-2026-10-13': { cat: 'news', cover: 'steamos-proton-evening-2026-10-13' },
   'steam-frame-steamos-0-4-steamvr-2-18-3': { cat: 'news', cover: 'steam-frame-steamos-0-4-steamvr-2-18-3' },
   'steam-frame-backorder-2027': { cat: 'news', cover: 'steam-frame-backorder-2027' },
-  'winui-gallery-3-0': { cat: 'news', tags: ['windows','winui','dev'], cover: 'winui-gallery-3-0' },
+  'winui-gallery-3-0': { cat: 'windows', tags: ['windows','winui','dev'], cover: 'winui-gallery-3-0' },
   'valve-index-discontinued-steam-frame-port': { cat: 'news', cover: 'valve-index-discontinued-steam-frame-port' },
   'xbox-nano-controller': { cat: 'news', cover: 'xbox-nano-controller' },
   'steamos-proton-daily-2026-10-15': { cat: 'news', cover: 'steamos-proton-daily-2026-10-15' },
@@ -47,7 +47,7 @@ const map = {
   'steamos-3-9-stable-daily-2026-10-24': { dir: '/workspace/vettv-articles', cat: 'steamos-news', cover: 'steamos-3-9-stable-daily-2026-10-24', order: 1 },
   'steam-frame-steamvr-2026-10-24': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steam-frame-steamvr-2026-10-24' },
   'windows-11-iso-on-a-cd': { dir: '/workspace/vettv-articles', cat: 'windows', tags: ['windows','windows-11','tiny11','ntdev','retro-computing','debloat'], cover: 'windows-11-iso-on-a-cd', offTopic: true },
-  'win7-userspace-win10-kernel-wearr': { dir: '/workspace/vettv-articles', cat: 'windows', tags: ['windows','windows-7','windows-10','retro-computing','reverse-engineering','hobbyist-projects'], cover: 'win7-userspace-win10-kernel-wearr', offTopic: true },
+  'win7-userspace-win10-kernel-wearr': { dir: '/workspace/vettv-articles', cat: 'windows', tags: ['windows','windows-7','windows-10','retro-computing','reverse-engineering','hobbyist-projects'], cover: 'win7-userspace-win10-kernel-wearr', offTopic: true, author: 'Vet, VetTV Studios', soften: [['wearr posted "doing some bullshit', 'wearr posted that they were "doing some BS']] },
 };
 // Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, a 'steamos-news' tag -> SteamOS News, else News.
 const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
@@ -75,7 +75,8 @@ for (const [slug, m] of Object.entries(map)) {
   const seo = cap.match(/## SEO title[^\n]*\n+([^\n]+)/); const seoTitle = seo ? seo[1].trim() : '';
   const sources = []; const si = lines.findIndex(l => /^##\s+Sources/i.test(l));
   if (si >= 0) for (const l of lines.slice(si + 1)) { if (/^#/.test(l)) break; const mm = l.match(/^[-*]\s+(.+?):\s+(https?:\/\/\S+)\s*$/); if (mm) sources.push({ title: mm[1], url: mm[2] }); }
-  const body = lines.slice(i).join('\n').trim();
+  if (m.author) author = m.author;
+  let body = lines.slice(i).join('\n').trim(); for (const [a, b] of m.soften || []) body = body.replaceAll(a, b);
   const src = path.join(SRC, m.cover + '-cover-pickax-1920x1080.jpg');
   let cover; if (fs.existsSync(src)) { fs.copyFileSync(src, path.join(COV, slug + '.jpg')); cover = `covers/${slug}.jpg`; }
   const fm = ['---', `title: ${q(title)}`, `description: ${q(desc)}`, `summary: ${q(desc)}`, seoTitle ? `seoTitle: ${q(seoTitle)}` : '', `pubDate: ${date}`, `publishedAt: ${new Date(fs.statSync(f).mtimeMs).toISOString()}`, `author: ${q(author)}`,

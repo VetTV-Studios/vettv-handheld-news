@@ -5,7 +5,7 @@ summary: "Developer wearr has been pairing a Windows 7 SP1 userland with Windows
 seoTitle: "Windows 7 Userspace on a Windows 10 Kernel: wearr's Experiment"
 pubDate: 2026-10-26
 publishedAt: 2026-10-26T13:50:37.760Z
-author: "Vet, VetTV Handheld"
+author: "Vet, VetTV Studios"
 category: windows
 tags: ["windows","windows-7","windows-10","retro-computing","reverse-engineering","hobbyist-projects"]
 cover: "covers/win7-userspace-win10-kernel-wearr.jpg"
@@ -42,7 +42,7 @@ The attached 640x480 screenshot shows a Windows 7-style taskbar and Start orb ov
 
 This isn't wearr's first post about the project:
 
-- **October 8 (7:49 PM CT):** wearr posted "doing some bullshit (windows 10 1502 kernel with windows 7 sp1 userland)." Note the "1502" there. Monday's post calls the stable kernel "1507," which is the first public Windows 10 release. wearr hasn't clarified whether "1502" was a typo or a different build, so I'm treating it as unconfirmed.
+- **October 8 (7:49 PM CT):** wearr posted that they were "doing some BS (windows 10 1502 kernel with windows 7 sp1 userland)." Note the "1502" there. Monday's post calls the stable kernel "1507," which is the first public Windows 10 release. wearr hasn't clarified whether "1502" was a typo or a different build, so I'm treating it as unconfirmed.
 - **October 12:** Replying to a question about whether the project was "clean," wearr wrote: "No leaked code used, I had no idea there were even rumors of win7 leaks."
 
 There's no public download, repo or release from wearr that I could find. This is an in-progress experiment shared as screenshots.
