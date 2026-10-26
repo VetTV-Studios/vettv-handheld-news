@@ -48,6 +48,7 @@ const map = {
   'steam-frame-steamvr-2026-10-24': { dir: '/workspace/vettv-articles', cat: 'news', cover: 'steam-frame-steamvr-2026-10-24' },
   'windows-11-iso-on-a-cd': { dir: '/workspace/vettv-articles', cat: 'windows', tags: ['windows','windows-11','tiny11','ntdev','retro-computing','debloat'], cover: 'windows-11-iso-on-a-cd', offTopic: true },
   'win7-userspace-win10-kernel-wearr': { dir: '/workspace/vettv-articles', cat: 'windows', tags: ['windows','windows-7','windows-10','retro-computing','reverse-engineering','hobbyist-projects'], cover: 'win7-userspace-win10-kernel-wearr', offTopic: true, author: 'Vet, VetTV Studios', soften: [['wearr posted "doing some bullshit', 'wearr posted that they were "doing some BS']] },
+  'reactos-community-roundup-2026-10-26': { dir: '/workspace/vettv-articles', cat: 'reactos-open-nt', tags: ['reactos','open-source','libernt','cusdeb-os','retro-computing'], cover: 'reactos-community-roundup-2026-10-26', offTopic: true, date: '2026-10-26', desk2: true },
 };
 // Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, a 'steamos-news' tag -> SteamOS News, else News.
 const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
@@ -58,7 +59,16 @@ for (const [slug, m] of Object.entries(map)) {
   if (only.length && !only.includes(slug)) continue;
   const SRC = m.dir || SRC0;
   const f = path.join(SRC, slug + '.md'); if (!fs.existsSync(f)) { console.warn('missing', f); continue; }
-  const lines = fs.readFileSync(f, 'utf8').split('\n');
+  let lines = fs.readFileSync(f, 'utf8').split('\n'); let seo2 = '';
+  if (m.desk2) { const o = []; let skip = false, dek = false;
+    for (const l of lines) { const t = l.trim();
+      if (/^\*\*Alternate headlines/.test(t)) { skip = true; continue; } if (skip) { if (/^[-*]\s/.test(t)) continue; skip = false; }
+      const sm = t.match(/^\*\*SEO title:\*\*\s*(.+)$/); if (sm) { seo2 = sm[1]; continue; }
+      if (/^\*\*Tags:\*\*/.test(t)) continue;
+      if (/^\*By [^|]+\*$/.test(t)) { o.push(t.replace(/\*$/, ` | ${m.date}*`)); continue; }
+      if (!dek && /^\*[^*].+[^*]\*$/.test(t) && !/^\*(By|Disclosure)/.test(t)) { dek = true; o.splice(1, 0, '### ' + t.slice(1, -1)); continue; }
+      o.push(l); }
+    lines = o; }
   let title = '', desc = '', author = 'Vet', date = '2026-10-13', i = 0;
   for (; i < lines.length; i++) {
     const l = lines[i].trim();
@@ -72,9 +82,9 @@ for (const [slug, m] of Object.entries(map)) {
     const raw = blk ? (/^\s*[-*]\s/m.test(blk[1]) ? blk[1].split('\n').filter(l => /^\s*[-*]\s/.test(l)).map(l => l.replace(/^\s*[-*]\s+/, '')) : blk[1].split('\n')[0].split(',')) : [];
     m.tags = raw.map(x => x.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).filter(Boolean); }
   const capF = path.join(SRC, slug + '.captions.md'); const cap = fs.existsSync(capF) ? fs.readFileSync(capF, 'utf8') : '';
-  const seo = cap.match(/## SEO title[^\n]*\n+([^\n]+)/); const seoTitle = seo ? seo[1].trim() : '';
+  const seo = cap.match(/## SEO title[^\n]*\n+([^\n]+)/); const seoTitle = seo ? seo[1].trim() : seo2;
   const sources = []; const si = lines.findIndex(l => /^##\s+Sources/i.test(l));
-  if (si >= 0) for (const l of lines.slice(si + 1)) { if (/^#/.test(l)) break; const mm = l.match(/^[-*]\s+(.+?):\s+(https?:\/\/\S+)\s*$/); if (mm) sources.push({ title: mm[1], url: mm[2] }); }
+  if (si >= 0) for (const l of lines.slice(si + 1)) { if (/^#/.test(l)) break; const mm = l.match(/^[-*]\s+(.+?):\s+(https?:\/\/\S+)\s*$/); if (mm) sources.push({ title: mm[1], url: mm[2] }); const lk = l.match(/^[-*]\s+\[(.+?)\]\((https?:\/\/[^)\s]+)\)\s*$/); if (lk) sources.push({ title: lk[1], url: lk[2] }); }
   if (m.author) author = m.author;
   let body = lines.slice(i).join('\n').trim(); for (const [a, b] of m.soften || []) body = body.replaceAll(a, b);
   const src = path.join(SRC, m.cover + '-cover-pickax-1920x1080.jpg');
