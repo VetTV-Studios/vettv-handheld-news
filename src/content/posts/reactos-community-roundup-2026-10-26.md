@@ -1,11 +1,11 @@
 ---
-title: "ReactOS Weekend: A Fork Runs Gemma 4, Its Desktop Lands on Linux, and UDFS Nears NTFS Speeds"
+title: "ReactOS Weekend: A Fork Runs Gemma 4, Its Desktop Lands on Linux, and a Modified UDFS Driver Gets Benchmarked"
 description: "CusDeb OS Alpha 1 puts the ReactOS shell on Debian, LiberNT runs llama.cpp with Gemma 4, a 0.4.17 nightly runs Apple IIgs demos, and a modified UDFS driver gets benchmarked against Windows 7's NTFS."
 summary: "CusDeb OS Alpha 1 puts the ReactOS shell on Debian, LiberNT runs llama.cpp with Gemma 4, a 0.4.17 nightly runs Apple IIgs demos, and a modified UDFS driver gets benchmarked against Windows 7's NTFS."
 seoTitle: "ReactOS news: CusDeb OS alpha, LiberNT runs Gemma 4, UDFS benchmark"
 pubDate: 2026-10-26
-publishedAt: 2026-10-26T17:25:21.595Z
-author: "Vet"
+publishedAt: 2026-10-26T18:52:31.436Z
+author: "Vet, VetTV Studios"
 category: reactos-open-nt
 tags: ["reactos","open-source","libernt","cusdeb-os","retro-computing"]
 cover: "covers/reactos-community-roundup-2026-10-26.jpg"
@@ -41,7 +41,7 @@ source: "Article Desk: reactos-community-roundup-2026-10-26.md"
 ---
 It was a busy weekend for ReactOS, the open-source operating system that aims to run Windows apps and drivers. One fork ran a local AI model, another project put the ReactOS desktop on Linux, a nightly build ran Apple IIgs demos, and a driver developer posted disk benchmarks. All four come from community X posts, which we checked against project pages and the screenshots themselves.
 
-*Disclosure: VetTV develops VetTV Retro OS, which is also a ReactOS fork.*
+*Disclosure: VetTV develops VetTV Retro OS, a fork of ReactOS that is still in development.*
 
 ## CusDeb OS Alpha 1: the ReactOS desktop on a Linux kernel
 
