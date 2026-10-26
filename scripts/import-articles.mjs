@@ -49,6 +49,8 @@ const map = {
   'windows-11-iso-on-a-cd': { dir: '/workspace/vettv-articles', cat: 'windows', tags: ['windows','windows-11','tiny11','ntdev','retro-computing','debloat'], cover: 'windows-11-iso-on-a-cd', offTopic: true },
   'win7-userspace-win10-kernel-wearr': { dir: '/workspace/vettv-articles', cat: 'windows', tags: ['windows','windows-7','windows-10','retro-computing','reverse-engineering','hobbyist-projects'], cover: 'win7-userspace-win10-kernel-wearr', offTopic: true, author: 'Vet, VetTV Studios', soften: [['wearr posted "doing some bullshit', 'wearr posted that they were "doing some BS']] },
   'reactos-community-roundup-2026-10-26': { dir: '/workspace/vettv-articles', cat: 'reactos-open-nt', tags: ['reactos','open-source','libernt','cusdeb-os','retro-computing'], cover: 'reactos-community-roundup-2026-10-26', offTopic: true, date: '2026-10-26', desk2: true, author: 'Vet, VetTV Studios' },
+  'advanced-shader-delivery-all-rtx-2026-10': { dir: '/workspace/vettv-articles', cat: 'windows', tags: ['windows','advanced-shader-delivery','directx','pc-gaming','nvidia','windows-11'], cover: 'advanced-shader-delivery-all-rtx-2026-10', offTopic: true, date: '2026-10-26', desk2: true, author: 'Vet, VetTV Studios' },
+  'windows-xbox-week-2026-10-26': { dir: '/workspace/vettv-articles', cat: 'windows', tags: ['windows','xbox','game-pass','id-xbox','windows-insider','arkane'], cover: 'windows-xbox-week-2026-10-26', offTopic: true, date: '2026-10-26', desk2: true, author: 'Vet, VetTV Studios', soften: [['](./advanced-shader-delivery-all-rtx-2026-10)', '](/vettv-handheld-news/posts/advanced-shader-delivery-all-rtx-2026-10/)']] },
 };
 // Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, a 'steamos-news' tag -> SteamOS News, else News.
 const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
@@ -85,7 +87,7 @@ for (const [slug, m] of Object.entries(map)) {
   const seo = cap.match(/## SEO title[^\n]*\n+([^\n]+)/); const seoTitle = seo ? seo[1].trim() : seo2;
   const sources = []; const si = lines.findIndex(l => /^##\s+Sources/i.test(l));
   if (si >= 0) for (const l of lines.slice(si + 1)) { if (/^#/.test(l)) break; const mm = l.match(/^[-*]\s+(.+?):\s+(https?:\/\/\S+)\s*$/); if (mm) sources.push({ title: mm[1], url: mm[2] }); const lk = l.match(/^[-*]\s+\[(.+?)\]\((https?:\/\/[^)\s]+)\)\s*$/); if (lk) sources.push({ title: lk[1], url: lk[2] }); }
-  if (m.author) author = m.author;
+  if (m.author) author = m.author; if (m.date) date = m.date;
   let body = lines.slice(i).join('\n').trim(); for (const [a, b] of m.soften || []) body = body.replaceAll(a, b);
   const src = path.join(SRC, m.cover + '-cover-pickax-1920x1080.jpg');
   let cover; if (fs.existsSync(src)) { fs.copyFileSync(src, path.join(COV, slug + '.jpg')); cover = `covers/${slug}.jpg`; }
