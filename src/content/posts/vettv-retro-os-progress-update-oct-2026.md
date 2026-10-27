@@ -6,7 +6,8 @@ seoTitle: "VetTV Retro OS Dev Log: Launch Hook Merged, Launcher Written"
 pubDate: 2026-10-19
 publishedAt: 2026-10-19T17:44:06.719Z
 author: "Vet, VetTV Studios"
-category: project-updates
+category: projects
+type: news
 tags: ["vettv-retro-os","reactos","retro-gaming","dos-games","open-source"]
 cover: "covers/vettv-retro-os-progress-update-oct-2026.jpg"
 offTopic: true

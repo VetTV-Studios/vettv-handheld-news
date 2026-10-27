@@ -4,7 +4,8 @@ description: "Valve's latest Steam Frame update promises up to 12% better batter
 pubDate: 2026-10-13
 publishedAt: 2026-10-17T20:54:18-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: handhelds
+type: news
 tags: ["steam-frame","steamvr","steamos","virtual-reality","valve"]
 cover: "covers/steam-frame-steamos-0-4-steamvr-2-18-3.jpg"
 source: "Article Desk: steam-frame-steamos-0-4-steamvr-2-18-3.md"

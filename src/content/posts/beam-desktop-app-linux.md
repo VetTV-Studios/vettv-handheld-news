@@ -5,7 +5,8 @@ summary: "The multistreaming platform's new desktop app adds Linux one day after
 pubDate: 2026-10-17
 publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: linux-steamos
+type: news
 tags: ["linux","live-streaming","beam","steamos","content-creators"]
 cover: "covers/beam-desktop-app-linux.jpg"
 sources:

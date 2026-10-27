@@ -6,7 +6,8 @@ seoTitle: "Windows 11 Build 26340.9750: Xbox Mode Gaming Task View and Run"
 pubDate: 2026-10-18
 publishedAt: 2026-10-18T10:33:30-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: windows
+type: news
 tags: ["windows-11","xbox-mode","pc-gaming","windows-insider","gaming-handhelds"]
 cover: "covers/windows-11-gaming-task-view-run-dialog.jpg"
 sources:

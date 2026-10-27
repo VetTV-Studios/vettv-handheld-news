@@ -6,7 +6,8 @@ seoTitle: "Double Fine Humble Bundle: Steam Deck Ratings for All 11 Games"
 pubDate: 2026-10-19
 publishedAt: 2026-10-19T15:51:08.775Z
 author: "Vet, VetTV Handheld"
-category: steam-deals
+category: deals
+type: deal
 tags: ["steam-deals","steam-deck","steamos","humble-bundle","double-fine"]
 cover: "covers/double-fine-humble-bundle-steam-deck.jpg"
 sources:

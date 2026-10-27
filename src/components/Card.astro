@@ -1,12 +1,22 @@
 ---
-import { CATS, url, asset, fmt } from '../site';
-const { post, big = false } = Astro.props; const d = post.data;
+// Variants: 'std' (grid tile, badge over art), 'big' (lead tile with excerpt), 'compact' (thumb + headline row), 'rank' (numbered, text only).
+import { CATS, TYPE_LABEL, url, asset, fmt } from '../site';
+const { post, big = false, variant = big ? 'big' : 'std', n } = Astro.props; const d = post.data;
+const href = url(`posts/${post.id}`); const t = d.type && d.type !== 'news' ? d.type : '';
 ---
-<article class={`card ${big ? 'big' : ''}`}>
-  <a href={url(`posts/${post.id}`)} class="thumb">
-    {d.cover ? <img src={asset(d.cover)} alt="" loading="lazy" /> : <div class="ph"><img src={asset('art/watermark_150x150.png')} alt="" /></div>}
-  </a>
-  <div class="meta"><a class="pill" href={url(d.category)}>{CATS[d.category]}</a>{d.sample && <span class="pill sample">Sample</span>}<time>{fmt(d.pubDate)}</time></div>
-  <h3><a href={url(`posts/${post.id}`)}>{d.title}</a></h3>
-  {big && <p>{d.description}</p>}
-</article>
+{variant === 'rank' ? (
+  <article class="card-rank"><span class="rank-n">{n}</span><div><a class="kick" href={url(d.category)}>{CATS[d.category]}</a><h3><a href={href}>{d.title}</a></h3></div></article>
+) : variant === 'compact' ? (
+  <article class="card-compact"><a href={href} class="thumb">{d.cover ? <img src={asset(d.cover)} alt="" loading="lazy" /> : <div class="ph"><img src={asset('art/watermark_150x150.png')} alt="" /></div>}</a>
+    <div><div class="meta">{t && <span class={`type type-${t}`}>{TYPE_LABEL[t]}</span>}<a class="kick" href={url(d.category)}>{CATS[d.category]}</a><time>{fmt(d.pubDate)}</time></div><h3><a href={href}>{d.title}</a></h3></div></article>
+) : (
+  <article class={`card ${variant === 'big' ? 'big' : ''}`}>
+    <a href={href} class="thumb">
+      {d.cover ? <img src={asset(d.cover)} alt="" loading="lazy" /> : <div class="ph"><img src={asset('art/watermark_150x150.png')} alt="" /></div>}
+      <span class="badges"><span class="pill">{CATS[d.category]}</span>{t && <span class={`type type-${t}`}>{TYPE_LABEL[t]}</span>}{d.sample && <span class="pill sample">Sample</span>}</span>
+    </a>
+    <h3><a href={href}>{d.title}</a></h3>
+    {(variant === 'big' || Astro.props.excerpt) && <p>{d.description}</p>}
+    <div class="meta"><span class="by">{d.author}</span><time>{fmt(d.pubDate)}</time></div>
+  </article>
+)}

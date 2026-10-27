@@ -6,7 +6,8 @@ seoTitle: "Steam Beta Linux Alt-Tab Fix: Overlay Hang Still Reported"
 pubDate: 2026-10-19
 publishedAt: 2026-10-19T16:38:16.396Z
 author: "Vet, VetTV Handheld"
-category: news
+category: linux-steamos
+type: news
 tags: ["steam","linux-gaming","steamos","steam-client-beta","bug-fix"]
 cover: "covers/steam-beta-linux-alt-tab-fix-incomplete.jpg"
 sources:

@@ -1,3 +1,4 @@
+import { sectionFor, typeFor } from './sections.mjs';
 // Imports VetTV Article Desk drafts (read-only) from /workspace/articles (or m.dir) into src/content/posts.
 // Usage: node scripts/import-articles.mjs [slug ...]   (no args = all). Dates are the CT byline date.
 import fs from 'node:fs'; import path from 'node:path';
@@ -96,7 +97,7 @@ for (const [slug, m] of Object.entries(map)) {
   const src = path.join(SRC, m.cover + '-cover-pickax-1920x1080.jpg');
   let cover; if (fs.existsSync(src)) { fs.copyFileSync(src, path.join(COV, slug + '.jpg')); cover = `covers/${slug}.jpg`; }
   const fm = ['---', `title: ${q(title)}`, `description: ${q(desc)}`, `summary: ${q(desc)}`, seoTitle ? `seoTitle: ${q(seoTitle)}` : '', `pubDate: ${date}`, `publishedAt: ${new Date(fs.statSync(f).mtimeMs).toISOString()}`, `author: ${q(author)}`,
-    `category: ${m.cat || autoCat(m.tags, title)}`, `tags: ${q(m.tags)}`, cover ? `cover: ${q(cover)}` : '', m.featured ? 'featured: true' : '', m.order ? `order: ${m.order}` : '', m.offTopic ? 'offTopic: true' : '',
+    `category: ${sectionFor(slug, m.cat || autoCat(m.tags, title))}`, `type: ${m.type || typeFor(slug, m.cat || '')}`, m.trending ? 'trending: true' : '', `tags: ${q(m.tags)}`, cover ? `cover: ${q(cover)}` : '', m.featured ? 'featured: true' : '', m.order ? `order: ${m.order}` : '', m.offTopic ? 'offTopic: true' : '',
     sources.length ? 'sources:\n' + sources.map(x => `  - title: ${q(x.title)}\n    url: ${q(x.url)}`).join('\n') : '',
     `source: ${q('Article Desk: ' + slug + '.md')}`, '---', ''].filter(Boolean).join('\n');
   fs.writeFileSync(path.join(OUT, slug + '.md'), fm + '\n' + body + '\n');

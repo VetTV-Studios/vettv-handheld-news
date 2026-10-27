@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro'; import { SITE, asset } from '../site';
+---
+<Base title="Videos" description="VetTV Handheld on YouTube." active="videos">
+  <header class="page-head"><p class="kicker">Videos</p><h1 class="page-h">VetTV Handheld on YouTube</h1><p class="cat-desc">Hands-on videos, setup walk-throughs and news recaps from the VetTV Handheld channel.</p></header>
+  <a class="video-cta" href={SITE.youtube}><img src={asset('art/banner_2560x1440.png')} alt="" /><span>▶ Watch on YouTube</span></a>
+</Base>

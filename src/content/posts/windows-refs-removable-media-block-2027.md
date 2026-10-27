@@ -7,6 +7,7 @@ pubDate: 2026-10-26
 publishedAt: 2026-10-26T19:39:58.184Z
 author: "Vet, VetTV Studios"
 category: windows
+type: news
 tags: ["windows","windows-11","refs","windows-update","usb","storage"]
 cover: "covers/windows-refs-removable-media-block-2027.jpg"
 offTopic: true

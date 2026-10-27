@@ -1,27 +1,42 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro'; import Card from '../components/Card.astro';
-import { CATS, url, asset, fmt, sortPosts } from '../site';
+import { CATS, CAT_DESC, TYPE_LABEL, url, asset, fmt, sortPosts } from '../site';
 const posts = sortPosts(await getCollection('posts'));
-// Hero + side slots prefer on-topic, non-sample posts (newest first); off-topic only fills gaps.
+// Lead + featured strip prefer on-topic, non-sample posts (newest first); off-topic only fills gaps. Keeps SteamOS 3.9 as lead.
 const pref = [...posts.filter(p => !p.data.offTopic && !p.data.sample), ...posts.filter(p => p.data.offTopic || p.data.sample)];
-const [hero, ...side] = pref.slice(0, 5);
+const [hero, ...side] = pref.slice(0, 4);
 const top = new Set([hero, ...side].map(p => p.id));
-const rest = posts.filter(p => !top.has(p.id));
+const latest = posts.filter(p => !top.has(p.id)).slice(0, 12);
+// Trending = editor-flagged (`trending: true`); no analytics. Falls back to `featured`, then newest on-topic.
+let trending = posts.filter(p => p.data.trending); if (trending.length < 5) trending = [...trending, ...pref.filter(p => !trending.includes(p))].slice(0, 5);
+const rails = Object.keys(CATS).filter(k => k !== 'news').map(k => [k, posts.filter(p => p.data.category === k).slice(0, 4)] as const).filter(([, ps]) => ps.length);
+const ht = hero.data.type !== 'news' ? hero.data.type : '';
 ---
 <Base>
-  <section class="hero">
+  <section class="lead">
     <a class="hero-main" href={url(`posts/${hero.id}`)}>
-      <div class="hero-img"><img src={asset(hero.data.cover || 'art/banner_2560x1440.png')} alt="" /></div>
+      <img src={asset(hero.data.cover || 'art/banner_2560x1440.png')} alt="" />
       <div class="hero-txt">
-        <div class="meta"><span class="m-only m-feat">★ Featured</span><span class="pill">{CATS[hero.data.category]}</span><time>{fmt(hero.data.pubDate)} · {hero.data.author}</time></div>
+        <div class="meta"><span class="pill feat">★ Lead story</span><span class="pill">{CATS[hero.data.category]}</span>{ht && <span class={`type type-${ht}`}>{TYPE_LABEL[ht]}</span>}</div>
         <h1>{hero.data.title}</h1><p>{hero.data.description}</p>
+        <div class="meta"><span class="by">{hero.data.author}</span><time>{fmt(hero.data.pubDate)}</time></div>
       </div>
     </a>
-    <div class="hero-side">{side.map(p => <Card post={p} />)}</div>
+    <div class="lead-side">{side.map(p => <Card post={p} variant="compact" />)}</div>
   </section>
-  <h2 class="sec">Latest</h2>
-  <section class="grid">{rest.map(p => <Card post={p} />)}</section>
-  <div class="home-cats">{Object.entries(CATS).map(([k, v]) => { const ps = posts.filter(p => p.data.category === k).slice(0, 4); return ps.length > 0 && (
-    <><h2 class="sec"><a href={url(k)}>{v} →</a></h2><section class="grid">{ps.map(p => <Card post={p} />)}</section></>); })}</div>
+  <div class="home-desk">
+    <div class="home-main">
+      <h2 class="sec"><span>Latest stories</span><a class="sec-cta" href={url('news')}>All news →</a></h2>
+      <section class="grid">{latest.map(p => <Card post={p} />)}</section>
+    </div>
+    <aside class="rail">
+      <div class="rail-block"><h2 class="rail-title">Trending <small>editor picks</small></h2>{trending.map((p, i) => <Card post={p} variant="rank" n={i + 1} />)}</div>
+      <div class="rail-block"><h2 class="rail-title">Sections</h2><ul class="rail-secs">{Object.entries(CATS).filter(([k]) => k !== 'news').map(([k, v]) => <li><a href={url(k)}>{v}</a></li>)}<li><a href={url('videos')}>Videos</a></li></ul></div>
+    </aside>
+  </div>
+  {rails.map(([k, ps]) => (
+    <section class="sec-row"><h2 class="sec"><span>{CATS[k]}</span><a class="sec-cta" href={url(k)}>More {CATS[k]} →</a></h2>
+      <p class="sec-desc">{CAT_DESC[k]}</p>
+      <div class="row-scroller">{ps.map(p => <Card post={p} />)}</div></section>))}
 </Base>

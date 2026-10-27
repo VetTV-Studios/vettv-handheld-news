@@ -6,7 +6,8 @@ seoTitle: "Legion Go S SteamOS Z1 Extreme Deal: $999.99 at Best Buy"
 pubDate: 2026-10-18
 publishedAt: 2026-10-18T19:14:33-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: deals
+type: deal
 tags: ["legion-go-s","steamos","handheld-gaming","deals","lenovo"]
 cover: "covers/legion-go-s-steamos-deal-best-buy.jpg"
 sources:

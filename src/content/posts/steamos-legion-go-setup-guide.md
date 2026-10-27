@@ -4,7 +4,8 @@ description: "A step-by-step guide to installing Valve's own SteamOS on the firs
 pubDate: 2026-10-13
 publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV Handheld"
-category: guides
+category: handhelds
+type: guide
 tags: ["steamos","legion-go","handheld-gaming","guides","decky-loader"]
 cover: "covers/steamos-legion-go-setup-guide.jpg"
 source: "Article Desk: steamos-legion-go-setup-guide.md"

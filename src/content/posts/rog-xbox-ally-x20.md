@@ -5,7 +5,8 @@ summary: "ASUS's 20th-anniversary Xbox Ally adds a 7.4-inch OLED, 24GB of RAM an
 pubDate: 2026-10-15
 publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: handhelds
+type: news
 tags: ["rog-xbox-ally","asus-rog","handheld-gaming","xbox","steamos"]
 cover: "covers/rog-xbox-ally-x20.jpg"
 sources:

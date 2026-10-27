@@ -4,12 +4,12 @@ import Base from '../layouts/Base.astro'; import Card from '../components/Card.a
 import { CATS, CAT_DESC, sortPosts } from '../site';
 export async function getStaticPaths() {
   const all = await getCollection('posts');
-  return Object.keys(CATS).map(category => ({ params: { category }, props: { posts: sortPosts(all.filter(p => p.data.category === category)) } }));
+  return Object.keys(CATS).map(category => ({ params: { category }, props: { posts: sortPosts(category === 'news' ? all : all.filter(p => p.data.category === category)) } }));
 }
 const { category } = Astro.params; const { posts } = Astro.props;
 ---
-<Base title={CATS[category]} description={CAT_DESC[category] ?? `${CATS[category]} from VetTV Handheld News`} active={category}>
-  <h1 class="page-h">{CATS[category]}</h1>
-  {CAT_DESC[category] && <p class="cat-desc">{CAT_DESC[category]}</p>}
-  {posts.length ? <section class="grid">{posts.map((p, i) => <Card post={p} big={i === 0} />)}</section> : <p class="muted">No posts yet.</p>}
+<Base title={CATS[category]} description={CAT_DESC[category]} active={category}>
+  <header class="page-head"><p class="kicker">Section</p><h1 class="page-h">{CATS[category]}</h1><p class="cat-desc">{CAT_DESC[category]}</p>{category === 'open-nt' && <p class="disclosure"><em>Disclosure: VetTV develops VetTV Retro OS, a fork of ReactOS that is still in development.</em></p>}
+  <p class="muted stat">{posts.length} {posts.length === 1 ? 'story' : 'stories'}</p></header>
+  {posts.length ? <section class="grid">{posts.map((p, i) => <Card post={p} big={i === 0} />)}</section> : <p class="muted">No posts yet. Coming soon.</p>}
 </Base>

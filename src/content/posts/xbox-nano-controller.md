@@ -5,7 +5,8 @@ summary: "Microsoft's smallest controller yet is about 5 inches long, weighs 3.5
 pubDate: 2026-10-14
 publishedAt: 2026-10-17T20:54:23-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: gaming
+type: news
 tags: ["xbox","xbox-nano","controllers","cloud-gaming","handheld-gaming"]
 cover: "covers/xbox-nano-controller.jpg"
 sources:

@@ -6,7 +6,8 @@ seoTitle: "Steam Frame Week: SteamVR 2.18, Factorio ARM64, PAYDAY VR, Zenith"
 pubDate: 2026-10-24
 publishedAt: 2026-10-24T13:06:40.100Z
 author: "Vet, VetTV Handheld"
-category: news
+category: handhelds
+type: news
 tags: ["steam-frame","steamvr","vr-gaming","linux-gaming","valve"]
 cover: "covers/steam-frame-steamvr-2026-10-24.jpg"
 sources:

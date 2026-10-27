@@ -6,7 +6,8 @@ seoTitle: "ReactOS Moves to C:\\Users: What the NT6 Folder Change Means"
 pubDate: 2026-10-18
 publishedAt: 2026-10-18T14:27:18-05:00
 author: "Vet, VetTV Handheld"
-category: retro-emulation
+category: open-nt
+type: news
 tags: ["reactos","open-source","windows-compatibility","operating-systems","retro-computing"]
 cover: "covers/reactos-nt6-users-folder.jpg"
 offTopic: true

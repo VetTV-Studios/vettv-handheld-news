@@ -7,6 +7,7 @@ pubDate: 2026-10-26
 publishedAt: 2026-10-26T15:24:01.180Z
 author: "Vet, VetTV Studios"
 category: windows
+type: news
 tags: ["windows","xbox","game-pass","id-xbox","windows-insider","arkane"]
 cover: "covers/windows-xbox-week-2026-10-26.jpg"
 offTopic: true

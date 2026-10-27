@@ -7,6 +7,7 @@ pubDate: 2026-10-26
 publishedAt: 2026-10-26T15:21:52.144Z
 author: "Vet, VetTV Studios"
 category: windows
+type: news
 tags: ["windows","windows-11","tiny11","ntdev","retro-computing","debloat"]
 cover: "covers/windows-11-iso-on-a-cd.jpg"
 offTopic: true

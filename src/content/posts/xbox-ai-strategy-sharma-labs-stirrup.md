@@ -6,7 +6,8 @@ seoTitle: "Xbox and AI in 2026: Sharma, Booty, Xbox Labs and Stirrup"
 pubDate: 2026-10-19
 publishedAt: 2026-10-19T15:56:02.539Z
 author: "Vet, VetTV Handheld"
-category: news
+category: gaming
+type: news
 tags: ["xbox","microsoft","artificial-intelligence","gaming-news","game-development"]
 cover: "covers/xbox-ai-strategy-sharma-labs-stirrup.jpg"
 offTopic: true

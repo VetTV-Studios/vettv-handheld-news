@@ -4,7 +4,8 @@ description: "OCLP's third release candidate brings macOS Tahoe support, new Wi-
 pubDate: 2026-10-13
 publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV"
-category: project-updates
+category: macos
+type: news
 tags: ["macos","oclp","hackintosh"]
 cover: "covers/oclp-3-0-0-rc3-hackintosh.jpg"
 source: "Article Desk: oclp-3-0-0-rc3-hackintosh.md"

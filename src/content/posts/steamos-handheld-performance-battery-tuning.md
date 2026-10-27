@@ -4,7 +4,8 @@ description: "A practical guide to SteamOS's Performance menu on PC handhelds: f
 pubDate: 2026-10-13
 publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV Handheld"
-category: guides
+category: handhelds
+type: guide
 tags: ["steamos","handheld-gaming","battery-life","performance","legion-go"]
 cover: "covers/steamos-handheld-performance-battery-tuning.jpg"
 source: "Article Desk: steamos-handheld-performance-battery-tuning.md"

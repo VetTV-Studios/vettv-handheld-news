@@ -5,7 +5,8 @@ summary: "Valve has confirmed a premium strap with a hot-swap battery and Index-
 pubDate: 2026-10-15
 publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: handhelds
+type: news
 tags: ["steam-frame","valve","virtual-reality","steamvr","sidequest"]
 cover: "covers/steam-frame-audio-strap-oled-plano-rumor.jpg"
 sources:

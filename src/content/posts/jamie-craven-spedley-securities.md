@@ -6,6 +6,7 @@ pubDate: 2026-10-17
 publishedAt: 2026-10-17T20:58:18-05:00
 author: "Vet, VetTV Handheld"
 category: news
+type: news
 tags: ["australia","corporate-law","asic","business-history","finance"]
 cover: "covers/jamie-craven-spedley-securities.jpg"
 offTopic: true

@@ -5,7 +5,8 @@ summary: "SteamOS 0.5.6 Beta lets Frame owners add Android .apk files to Steam f
 pubDate: 2026-10-17
 publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: handhelds
+type: news
 tags: ["steam-frame","steamvr","steamos","virtual-reality","valve"]
 cover: "covers/steam-frame-steamvr-2026-10-17.jpg"
 sources:

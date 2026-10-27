@@ -6,7 +6,9 @@ seoTitle: "Xbox Game Pass October 2026 Wave 2: games, tiers, leaving list"
 pubDate: 2026-10-26
 publishedAt: 2026-10-26T18:59:43.364Z
 author: "Vet, VetTV Studios"
-category: windows
+category: gaming
+type: news
+trending: true
 tags: ["windows","xbox-game-pass","final-fantasy-vii-remake","pc-game-pass","xbox","steam-deck"]
 cover: "covers/game-pass-october-wave-2-2026.jpg"
 offTopic: true
