@@ -10,7 +10,7 @@ type: news
 tags: ["recomplauncher","static-recompilation","n64recomp"]
 cover: "covers/recomplauncher-console-recomp-catalog.jpg"
 offTopic: true
-draft: true
+draft: false
 sources:
   - title: "RecompLauncher"
     url: "https://recomplauncher.com/"
