@@ -13,3 +13,5 @@ export const OVERRIDE = {
 export const TYPE_OVERRIDE = { 'legion-go-s-steamos-deal-best-buy':'deal' };
 export const sectionFor = (id, cat) => OVERRIDE[id] ?? LEGACY[cat] ?? cat;
 export const typeFor = (id, cat) => TYPE_OVERRIDE[id] ?? LEGACY_TYPE[cat] ?? 'news';
+// Article Desk new-format `section:` display names -> category ids.
+export const SECTION_NAMES = { 'News':'news', 'Handhelds':'handhelds', 'Gaming':'gaming', 'Windows':'windows', 'Linux & SteamOS':'linux-steamos', 'macOS':'macos', 'Open NT':'open-nt', 'Deals':'deals', 'Projects':'projects' };

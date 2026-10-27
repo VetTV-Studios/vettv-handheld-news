@@ -1,4 +1,4 @@
-import { sectionFor, typeFor } from './sections.mjs';
+import { sectionFor, typeFor, SECTION_NAMES } from './sections.mjs';
 // Imports VetTV Article Desk drafts (read-only) from /workspace/articles (or m.dir) into src/content/posts.
 // Usage: node scripts/import-articles.mjs [slug ...]   (no args = all). Dates are the CT byline date.
 import fs from 'node:fs'; import path from 'node:path';
@@ -61,6 +61,18 @@ const map = {
   'bazzite-stable-44-20261026': { dir: '/workspace/vettv-articles', cat: 'linux-steamos', cover: 'bazzite-stable-44-20261026', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
   'half-life-alyx-foveated-rendering-desktop': { dir: '/workspace/vettv-articles', cat: 'gaming', cover: 'half-life-alyx-foveated-rendering-desktop', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
   'recomplauncher-console-recomp-catalog': { dir: '/workspace/vettv-articles', cat: 'gaming', cover: 'recomplauncher-console-recomp-catalog', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'grok-voice-3-api-price': { dir: '/workspace/vettv-articles', cover: 'grok-voice-3-api-price', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'anthropic-s1-ipo-filing': { dir: '/workspace/vettv-articles', cover: 'anthropic-s1-ipo-filing', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'meta-muse-10-million-users': { dir: '/workspace/vettv-articles', cover: 'meta-muse-10-million-users', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'windows-11-26h2-full-availability': { dir: '/workspace/vettv-articles', cover: 'windows-11-26h2-full-availability', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'fsr-4-1-xbox-series-xbox-ally': { dir: '/workspace/vettv-articles', cover: 'fsr-4-1-xbox-series-xbox-ally', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'rog-xbox-ally-x20-sold-out': { dir: '/workspace/vettv-articles', cover: 'rog-xbox-ally-x20-sold-out', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'tears-of-the-kingdom-native-mac-unofficial': { dir: '/workspace/vettv-articles', cover: 'tears-of-the-kingdom-native-mac-unofficial', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'apple-arcade-november-2026': { dir: '/workspace/vettv-articles', cover: 'apple-arcade-november-2026', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'delta-2-iphone-duo-emulator': { dir: '/workspace/vettv-articles', cover: 'delta-2-iphone-duo-emulator', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'google-play-game-finder-gamer-dna': { dir: '/workspace/vettv-articles', cover: 'google-play-game-finder-gamer-dna', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'retro-week-odin-3-portal-atari-vcs-store': { dir: '/workspace/vettv-articles', cover: 'retro-week-odin-3-portal-atari-vcs-store', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'raven-nt-kernel-linux-reactos-ntfs': { dir: '/workspace/vettv-articles', cover: 'raven-nt-kernel-linux-reactos-ntfs', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
 };
 // Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, a 'steamos-news' tag -> SteamOS News, else News.
 const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
@@ -74,7 +86,7 @@ for (const [slug, m] of Object.entries(map)) {
   let lines = fs.readFileSync(f, 'utf8').split('\n'); let seo2 = ''; let draft = false;
   if (m.desk3 && lines[0].trim() === '---') { const end = lines.indexOf('---', 1); const fmL = lines.slice(1, end); lines = lines.slice(end + 1);
     const g = k => { const l = fmL.find(x => x.startsWith(k + ':')); return l ? l.slice(k.length + 1).trim() : ''; };
-    if (!m.date) m.date = g('date'); draft = g('draft') === 'true';
+    if (!m.date) m.date = g('date'); if (!m.cat) { const sec = g('section').replace(/^"|"$/g, ''); if (sec && !SECTION_NAMES[sec]) throw new Error(`${slug}: unmapped section ${sec}`); m.cat = SECTION_NAMES[sec]; } draft = g('draft') === 'true';
     if (!m.tags) m.tags = JSON.parse(g('tags') || '[]').map(x => x.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).filter(Boolean).slice(0, 3); }
   if (m.desk2) { const o = []; let skip = false, dek = !!m.desk3;
     for (const l of lines) { const t = l.trim();
@@ -103,7 +115,7 @@ for (const [slug, m] of Object.entries(map)) {
   if (si >= 0) for (const l of lines.slice(si + 1)) { if (/^#/.test(l)) break; const mm = l.match(/^[-*]\s+(.+?):\s+(https?:\/\/\S+)\s*$/); if (mm) sources.push({ title: mm[1], url: mm[2] }); const lk = l.match(/^[-*]\s+\[(.+?)\]\((https?:\/\/[^)\s]+)\)\s*$/); if (lk) sources.push({ title: lk[1], url: lk[2] }); }
   if (m.desk3) for (const l of lines) if (/^\*Sources?:/.test(l.trim())) for (const mm of l.matchAll(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g)) if (!sources.some(x => x.url === mm[2])) sources.push({ title: mm[1], url: mm[2] });
   if (m.author) author = m.author; if (m.date) date = m.date;
-  let body = lines.slice(i).join('\n').trim(); for (const [a, b] of m.soften || []) body = body.replaceAll(a, b);
+  let body = lines.slice(i).join('\n').trim(); for (const [a, b] of m.soften || []) body = body.replaceAll(a, b); if (m.desk3) body = body.replaceAll('](/posts/', '](/vettv-handheld-news/posts/');
   const src = path.join(SRC, m.cover + '-cover-pickax-1920x1080.jpg');
   let cover; if (fs.existsSync(src)) { fs.copyFileSync(src, path.join(COV, slug + '.jpg')); cover = `covers/${slug}.jpg`; }
   const fm = ['---', `title: ${q(title)}`, `description: ${q(desc)}`, `summary: ${q(desc)}`, seoTitle ? `seoTitle: ${q(seoTitle)}` : '', `pubDate: ${date}`, `publishedAt: ${new Date(fs.statSync(f).mtimeMs).toISOString()}`, `author: ${q(author)}`,
