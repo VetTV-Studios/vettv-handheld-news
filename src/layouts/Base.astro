@@ -1,5 +1,5 @@
 ---
-import { SITE, CATS, CAT_DESC, url, asset } from '../site';
+import { SITE, SOCIALS, CATS, CAT_DESC, url, asset } from '../site';
 import '../styles/global.css';
 import Subscribe from '../components/Subscribe.astro';
 const { title, seoTitle, description = SITE.tagline, image, type = 'website', active = '', noindex = false } = Astro.props;
@@ -58,7 +58,7 @@ const og = new URL(asset(image || 'art/banner_2560x1440.png'), Astro.site);
   {active !== 'subscribe' && <div class="wrap"><Subscribe id="foot-sub" compact /></div>}
   <div class="wrap foot-in">
     <ul class="socials" aria-label="VetTV channels">
-      <li><a href={SITE.youtube} aria-label="VetTV Handheld on YouTube" rel="me noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="M10 9v6l5-3z" fill="#0c0414"/></svg></a></li>
+      {SOCIALS.map(x => <li><a href={x.href} aria-label={`VetTV on ${x.name} (${x.handle})`} rel="me noopener"><svg viewBox="0 0 24 24" aria-hidden="true" set:html={x.d} /></a></li>)}
       <li><a href={asset('rss.xml')} aria-label="RSS feed"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="18.5" r="2.2" fill="currentColor"/><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></a></li>
     </ul>
     {FOOT.map(([h, links]) => <nav class="foot-grp" aria-label={h}><h2>{h}</h2><ul>{links.map(([l, p]) => <li><a href={p.startsWith('http') ? p : url(p)}>{l}</a></li>)}</ul></nav>)}

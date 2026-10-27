@@ -1,15 +1,13 @@
 ---
 import Base from '../layouts/Base.astro'; import { SITE, url, asset } from '../site';
 ---
-<Base title="Write to us" description="Contact VetTV Handheld News." noindex>
+<Base title="Write to us" description="Contact VetTV Handheld News.">
   <article class="post page-doc">
-    {/* PUBLISH_BLOCKER:DRAFT  contact address not set yet. */}
-    <p class="draft-flag">DRAFT · placeholder</p>
     <p class="kicker">Channels</p><h1>Write to us</h1>
     <div class="prose">
       <p>Tips, corrections and questions are welcome. Corrections are noted at the bottom of the story they fix.</p>
-      <p class="placeholder-box"><b>[PLACEHOLDER: contact email not set yet]</b></p>
-      <p>Meanwhile you can reach us through the channels on <a href={url('official-links')}>Official links</a>.</p>
+      <p>Email: <a href={`mailto:${SITE.email}`}><b>{SITE.email}</b></a></p>
+      <p>You can also reach us on the channels listed on <a href={url('official-links')}>Official links</a>.</p>
     </div>
   </article>
 </Base>

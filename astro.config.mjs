@@ -17,5 +17,5 @@ export default defineConfig({
     '/steam-deals': '/vettv-handheld-news/deals/',
     '/project-updates': '/vettv-handheld-news/projects/',
   },
-  integrations: [sitemap({ filter: (page) => !/\/(contact|privacy|terms|affiliate-disclosure|content-disclosure|retro-emulation-cloud|steamos-news|decky-plugins|reactos-open-nt|cloud-gaming|retro-emulation|steam-deals|project-updates)\/$/.test(page) })],
+  integrations: [sitemap({ filter: (page) => !/\/(retro-emulation-cloud|steamos-news|decky-plugins|reactos-open-nt|cloud-gaming|retro-emulation|steam-deals|project-updates)\/$/.test(page) })],
 });
