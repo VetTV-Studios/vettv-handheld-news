@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro'; import Tracker from '../components/Tracker.astro';
+import { TRACKERS, sortRows } from '../tracker';
+const T = TRACKERS['delistings']; const rows = sortRows(await getCollection(T.coll));
+---
+<Base title={T.name} description={T.desc} active="delistings">
+  <header class="page-head"><p class="kicker">Tracker</p><h1 class="page-h">{T.name}</h1><p class="cat-desc">{T.desc}</p><p class="muted stat">{rows.length} entries · Unconfirmed dates show as TBA, never a guess. Every row links its source.</p></header>
+  <Tracker rows={rows} kind="delistings" />
+</Base>

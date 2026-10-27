@@ -2,10 +2,15 @@
 import { SITE, CATS, CAT_DESC, url, asset } from '../site';
 import '../styles/global.css';
 import Subscribe from '../components/Subscribe.astro';
-const { title, seoTitle, description = SITE.tagline, image, type = 'website', active = '' } = Astro.props;
+const { title, seoTitle, description = SITE.tagline, image, type = 'website', active = '', noindex = false } = Astro.props;
 const fullTitle = seoTitle ? `${seoTitle} | ${SITE.name}` : title ? `${title} | ${SITE.name}` : SITE.name;
 const isHome = Astro.url.pathname.replace(/\/$/, '') === import.meta.env.BASE_URL.replace(/\/$/, '');
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const FOOT: [string, [string, string][]][] = [
+  ['Site', [...Object.entries(CATS).map(([k, v]) => [v, k] as [string, string]), ['Videos', 'videos'], ['Upcoming', 'upcoming'], ['Soft Launches', 'soft-launches'], ['Delistings', 'delistings'], ['About', 'about']]],
+  ['Channels', [['Official links', 'official-links'], ['Write to us', 'contact']]],
+  ['Legal', [['Privacy Policy', 'privacy'], ['Terms of Use', 'terms'], ['Affiliate disclosure', 'affiliate-disclosure'], ['Content disclosure', 'content-disclosure']]],
+];
 const og = new URL(asset(image || 'art/banner_2560x1440.png'), Astro.site);
 ---
 <!doctype html>
@@ -14,6 +19,7 @@ const og = new URL(asset(image || 'art/banner_2560x1440.png'), Astro.site);
 <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex" />}
 <link rel="canonical" href={canonical} />
 <link rel="icon" href={asset('art/watermark_150x150.png')} />
 <link rel="alternate" type="application/rss+xml" title={SITE.name} href={asset('rss.xml')} />
@@ -29,7 +35,7 @@ const og = new URL(asset(image || 'art/banner_2560x1440.png'), Astro.site);
 <header class="top">
   <div class="wrap bar">
     <a class="brand" href={url('')}><img src={asset('art/profile_800x800.png')} alt="" width="40" height="40" /><span>VetTV <b>Handheld</b> News</span></a>
-    <nav class="top-links" aria-label="Content types"><a href={url('guides')}>Guides</a><a href={url('reviews')}>Reviews</a><a href={url('tags')}>Tags</a></nav>
+    <nav class="top-links" aria-label="Content types"><a href={url('guides')}>Guides</a><a href={url('reviews')}>Reviews</a><a href={url('upcoming')}>Upcoming</a><a href={url('tags')}>Tags</a></nav>
     <form class="qs" action={url('search')} role="search"><input name="q" type="search" placeholder="Search…" aria-label="Search" /></form>
     <a class="m-only m-icon m-search" href={url('search')} aria-label="Search"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></a>
     <button class="menu" aria-label="Menu" aria-controls="m-drawer" aria-expanded="false" onclick="vhnNav()">☰</button>
@@ -44,15 +50,21 @@ const og = new URL(asset(image || 'art/banner_2560x1440.png'), Astro.site);
   <p class="m-drawer-h">Sections</p>
   {Object.entries(CATS).map(([k, v]) => <a class={`m-sec ${active === k ? 'on' : ''}`} href={url(k)}><b>{v}</b><small>{CAT_DESC[k]}</small></a>)}
   <a class={`m-sec ${active === 'videos' ? 'on' : ''}`} href={url('videos')}><b>Videos</b><small>VetTV Handheld on YouTube.</small></a>
+  <p class="m-drawer-h">Trackers</p><div class="m-drawer-links"><a href={url('upcoming')}>Upcoming</a><a href={url('soft-launches')}>Soft Launches</a><a href={url('delistings')}>Delistings</a></div>
   <div class="m-drawer-links"><a href={url('guides')}>Guides</a><a href={url('reviews')}>Reviews</a><a href={url('tags')}>Tags</a><a href={url('subscribe')}>Subscribe</a><a href={asset('rss.xml')}>RSS</a><a href={SITE.youtube}>YouTube</a></div>
 </div>
 <main class="wrap"><slot /></main>
-<footer class="foot"><div class="wrap">
-  {active !== 'subscribe' && <Subscribe id="foot-sub" compact />}
-  <img src={asset('art/watermark_150x150.png')} alt="" width="48" height="48" />
-  <p>© {new Date().getFullYear()} VetTV Studios · <a href={asset('rss.xml')}>RSS</a> · <a href={SITE.youtube}>YouTube</a> · <a href={url('search')}>Search</a> · <a href={url('subscribe')}>Subscribe</a></p>
-  <p class="muted">Independent coverage. Not affiliated with Valve, ASUS, Lenovo, Microsoft, Apple or SteamDeckHQ.</p>
-</div></footer>
+<footer class="foot">
+  {active !== 'subscribe' && <div class="wrap"><Subscribe id="foot-sub" compact /></div>}
+  <div class="wrap foot-in">
+    <ul class="socials" aria-label="VetTV channels">
+      <li><a href={SITE.youtube} aria-label="VetTV Handheld on YouTube" rel="me noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="M10 9v6l5-3z" fill="#0c0414"/></svg></a></li>
+      <li><a href={asset('rss.xml')} aria-label="RSS feed"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="18.5" r="2.2" fill="currentColor"/><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></a></li>
+    </ul>
+    {FOOT.map(([h, links]) => <nav class="foot-grp" aria-label={h}><h2>{h}</h2><ul>{links.map(([l, p]) => <li><a href={p.startsWith('http') ? p : url(p)}>{l}</a></li>)}</ul></nav>)}
+    <p class="foot-copy"><img src={asset('art/watermark_150x150.png')} alt="" width="28" height="28" />© {new Date().getFullYear()} VetTV Studios · Independent coverage. Not affiliated with Valve, ASUS, Lenovo, Microsoft, Apple or SteamDeckHQ.</p>
+  </div>
+</footer>
 <nav class="m-only m-tabbar" aria-label="Mobile">
   <a href={url('')} class={isHome ? 'on' : ''}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></svg><span>Home</span></a>
   <button type="button" onclick="vhnNav()" class={Object.keys(CATS).includes(active) ? 'on' : ''}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" fill="currentColor"/></svg><span>Sections</span></button>

@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro'; import { SITE, url, asset } from '../site';
+---
+<Base title="Official links" description="The only official VetTV Handheld News accounts." >
+  <article class="post page-doc">
+    <p class="kicker">Channels</p><h1>Official links</h1>
+    <div class="prose">
+      <p>These are the only official VetTV Handheld News channels. Anything else claiming to be us isn't.</p>
+      <ul>
+        <li><b>YouTube:</b> <a href={SITE.youtube} rel="me">VetTV Handheld (@VetTVHandheld)</a></li>
+        <li><b>RSS:</b> <a href={asset('rss.xml')}>{new URL(asset('rss.xml'), Astro.site).href}</a></li>
+        <li><b>Newsletter:</b> <a href={url('subscribe')}>VetTV Handheld weekly</a> (via Buttondown)</li>
+      </ul>
+    </div>
+  </article>
+</Base>

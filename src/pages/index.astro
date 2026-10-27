@@ -1,42 +1,102 @@
 ---
 import { getCollection } from 'astro:content';
-import Base from '../layouts/Base.astro'; import Card from '../components/Card.astro';
-import { CATS, CAT_DESC, TYPE_LABEL, url, asset, fmt, sortPosts } from '../site';
+import Base from '../layouts/Base.astro'; import Card from '../components/Card.astro'; import Tracker from '../components/Tracker.astro';
+import { CATS, CAT_DESC, TYPE_LABEL, url, asset, fmt, sortPosts } from '../site'; import { TRACKERS, sortRows } from '../tracker';
 const posts = sortPosts(await getCollection('posts'));
-// Lead + featured strip prefer on-topic, non-sample posts (newest first); off-topic only fills gaps. Keeps SteamOS 3.9 as lead.
-const pref = [...posts.filter(p => !p.data.offTopic && !p.data.sample), ...posts.filter(p => p.data.offTopic || p.data.sample)];
-const [hero, ...side] = pref.slice(0, 4);
-const top = new Set([hero, ...side].map(p => p.id));
-const latest = posts.filter(p => !top.has(p.id)).slice(0, 12);
-// Trending = editor-flagged (`trending: true`); no analytics. Falls back to `featured`, then newest on-topic.
-let trending = posts.filter(p => p.data.trending); if (trending.length < 5) trending = [...trending, ...pref.filter(p => !trending.includes(p))].slice(0, 5);
+const onTopic = posts.filter(p => !p.data.offTopic && !p.data.sample);
+const lead = posts.find(p => p.id === 'steamos-3-9-stable-daily-2026-10-24') ?? onTopic[0];
+// Carousel: SteamOS 3.9 first, then editor trending picks, then newest on-topic. 5 slides.
+const slides = [...new Set([lead, ...posts.filter(p => p.data.trending), ...onTopic])].slice(0, 5);
+// Trending = editor-flagged (`trending: true`); no analytics. Tops up with newest on-topic.
+const trending = [...new Set([...posts.filter(p => p.data.trending), ...onTopic])].slice(0, 5);
+// Latest: newest story highlighted, the rest grouped by upload day (pubDate = byline day in America/Chicago).
+const [top, ...river] = posts;
+const day = (d: Date) => d.toISOString().slice(0, 10);
+const groups = [...river.reduce((m, p) => m.set(day(p.data.pubDate), [...(m.get(day(p.data.pubDate)) ?? []), p]), new Map<string, typeof posts>())];
+const todayCT = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago' }).format(new Date());
+const label = (k: string) => { const diff = Math.round((Date.parse(todayCT) - Date.parse(k)) / 864e5);
+  return diff === 0 ? 'Today' : diff === 1 ? 'Yesterday' : diff > 1 && diff <= 7 ? new Date(k + 'T12:00Z').toLocaleDateString('en-US', { weekday: 'long', timeZone: 'UTC' }) : fmt(new Date(k + 'T12:00Z')); };
 const rails = Object.keys(CATS).filter(k => k !== 'news').map(k => [k, posts.filter(p => p.data.category === k).slice(0, 4)] as const).filter(([, ps]) => ps.length);
-const ht = hero.data.type !== 'news' ? hero.data.type : '';
+const trk = await Promise.all(Object.entries(TRACKERS).map(async ([k, T]) => [k, T, sortRows(await getCollection(T.coll as any))] as const));
+const tl = (p: any) => p.data.type !== 'news' ? p.data.type : '';
 ---
 <Base>
-  <section class="lead">
-    <a class="hero-main" href={url(`posts/${hero.id}`)}>
-      <img src={asset(hero.data.cover || 'art/banner_2560x1440.png')} alt="" />
-      <div class="hero-txt">
-        <div class="meta"><span class="pill feat">★ Lead story</span><span class="pill">{CATS[hero.data.category]}</span>{ht && <span class={`type type-${ht}`}>{TYPE_LABEL[ht]}</span>}</div>
-        <h1>{hero.data.title}</h1><p>{hero.data.description}</p>
-        <div class="meta"><span class="by">{hero.data.author}</span><time>{fmt(hero.data.pubDate)}</time></div>
-      </div>
-    </a>
-    <div class="lead-side">{side.map(p => <Card post={p} variant="compact" />)}</div>
+  <section class="carousel" aria-roledescription="carousel" aria-label="Featured stories" data-carousel>
+    <div class="car-track" id="car-track">
+      {slides.map((p, i) => (
+        <article class="car-slide" id={`slide-${i + 1}`} aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}`}>
+          <a class="hero-main" href={url(`posts/${p.id}`)} tabindex={i ? -1 : 0}>
+            <img src={asset(p.data.cover || 'art/banner_2560x1440.png')} alt="" loading={i ? 'lazy' : 'eager'} />
+            <div class="hero-txt">
+              <div class="meta">{i === 0 && <span class="pill feat">★ Lead story</span>}<span class="pill">{CATS[p.data.category]}</span>{tl(p) && <span class={`type type-${tl(p)}`}>{TYPE_LABEL[tl(p)]}</span>}</div>
+              {i === 0 ? <h1>{p.data.title}</h1> : <h2 class="h1">{p.data.title}</h2>}<p>{p.data.description}</p>
+              <div class="meta"><span class="by">{p.data.author}</span><time>{fmt(p.data.pubDate)}</time></div>
+            </div>
+          </a>
+        </article>))}
+    </div>
+    <div class="car-ctl">
+      <button type="button" class="car-btn" data-prev aria-controls="car-track" aria-label="Previous story" hidden>‹</button>
+      <div class="car-dots">{slides.map((p, i) => <a href={`#slide-${i + 1}`} class={`car-dot ${i ? '' : 'on'}`} aria-label={`Story ${i + 1}: ${p.data.title}`} aria-current={i ? undefined : 'true'}></a>)}</div>
+      <button type="button" class="car-btn" data-next aria-controls="car-track" aria-label="Next story" hidden>›</button>
+      <button type="button" class="car-btn car-pause" data-pause aria-label="Pause autoplay" hidden>❚❚</button>
+    </div>
   </section>
+
   <div class="home-desk">
     <div class="home-main">
       <h2 class="sec"><span>Latest stories</span><a class="sec-cta" href={url('news')}>All news →</a></h2>
-      <section class="grid">{latest.map(p => <Card post={p} />)}</section>
+      <div class="top-story"><Card post={top} big /></div>
+      {groups.map(([k, ps], gi) => (
+        <section class="day-group" data-day={k} data-more={gi >= 5 ? '' : undefined}>
+          <h3 class="day-h"><span data-day-label>{label(k)}</span><small>{ps.length} {ps.length === 1 ? 'story' : 'stories'}</small></h3>
+          <div class="grid">{ps.map(p => <Card post={p} />)}</div>
+        </section>))}
+      {groups.length > 5 && <a class="load-more" href={url('news')} data-load-more>Load more</a>}
     </div>
     <aside class="rail">
       <div class="rail-block"><h2 class="rail-title">Trending <small>editor picks</small></h2>{trending.map((p, i) => <Card post={p} variant="rank" n={i + 1} />)}</div>
       <div class="rail-block"><h2 class="rail-title">Sections</h2><ul class="rail-secs">{Object.entries(CATS).filter(([k]) => k !== 'news').map(([k, v]) => <li><a href={url(k)}>{v}</a></li>)}<li><a href={url('videos')}>Videos</a></li></ul></div>
     </aside>
   </div>
+
+  <section class="trackers"><h2 class="sec"><span>Trackers</span></h2>
+    <div class="trk-grid">{trk.map(([k, T, rows]) => (
+      <div class="trk-mod"><h3><a href={url(T.path)}>{T.name}</a></h3><p class="muted">{T.desc}</p>
+        <Tracker rows={rows} kind={k} limit={5} /><a class="trk-cta" href={url(T.path)}>View tracker ({rows.length}) →</a></div>))}</div>
+  </section>
+
   {rails.map(([k, ps]) => (
     <section class="sec-row"><h2 class="sec"><span>{CATS[k]}</span><a class="sec-cta" href={url(k)}>More {CATS[k]} →</a></h2>
       <p class="sec-desc">{CAT_DESC[k]}</p>
       <div class="row-scroller">{ps.map(p => <Card post={p} />)}</div></section>))}
+
+  <script is:inline>
+  (function(){
+    // Day labels relative to the reader's "today" in America/Chicago (build-time labels are the no-JS fallback).
+    var f=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Chicago'}),t=Date.parse(f.format(new Date()));
+    document.querySelectorAll('[data-day]').forEach(function(g){var k=g.dataset.day,d=Math.round((t-Date.parse(k))/864e5),n=new Date(k+'T12:00Z'),o={timeZone:'UTC'};
+      g.querySelector('[data-day-label]').textContent=d===0?'Today':d===1?'Yesterday':(d>1&&d<=7)?n.toLocaleDateString('en-US',Object.assign({weekday:'long'},o)):n.toLocaleDateString('en-US',Object.assign({month:'short',day:'numeric',year:'numeric'},o));});
+    // Load more: older day groups are in the HTML; hide them and reveal 5 at a time. No JS = link to /news/.
+    var more=[].slice.call(document.querySelectorAll('[data-more]')),lm=document.querySelector('[data-load-more]');
+    if(lm&&more.length){more.forEach(function(g){g.hidden=true});var b=document.createElement('button');b.type='button';b.className='load-more';b.textContent='Load more';lm.replaceWith(b);
+      b.onclick=function(){var n=more.splice(0,5);n.forEach(function(g){g.hidden=false});if(n[0])n[0].querySelector('h3').setAttribute('tabindex','-1'),n[0].querySelector('h3').focus();if(!more.length){var a=document.createElement('a');a.className='load-more';a.href=lm.getAttribute('href');a.textContent='All news →';b.replaceWith(a);}};}
+    // Carousel
+    var c=document.querySelector('[data-carousel]');if(!c)return;var tr=c.querySelector('.car-track'),s=[].slice.call(tr.children),dots=[].slice.call(c.querySelectorAll('.car-dot')),i=0,timer=null,paused=false,hover=false;
+    c.classList.add('js');c.querySelectorAll('.car-btn').forEach(function(b){b.hidden=false});
+    var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function go(n,focus){i=(n+s.length)%s.length;tr.scrollTo({left:s[i].offsetLeft-tr.offsetLeft,behavior:rm?'auto':'smooth'});
+      s.forEach(function(x,j){var a=x.querySelector('a');a.tabIndex=j===i?0:-1;x.setAttribute('aria-hidden',j===i?'false':'true')});
+      dots.forEach(function(d,j){d.classList.toggle('on',j===i);if(j===i)d.setAttribute('aria-current','true');else d.removeAttribute('aria-current')});if(focus)s[i].querySelector('a').focus({preventScroll:true});}
+    function play(){stop();if(!rm&&!paused&&!hover)timer=setInterval(function(){go(i+1)},6500)}function stop(){clearInterval(timer);timer=null}
+    c.querySelector('[data-prev]').onclick=function(){go(i-1)};c.querySelector('[data-next]').onclick=function(){go(i+1)};
+    dots.forEach(function(d,j){d.onclick=function(e){e.preventDefault();go(j,true)}});
+    var pb=c.querySelector('[data-pause]');if(rm){pb.hidden=true}pb.onclick=function(){paused=!paused;pb.textContent=paused?'▶':'❚❚';pb.setAttribute('aria-label',paused?'Play autoplay':'Pause autoplay');paused?stop():play()};
+    c.addEventListener('mouseenter',function(){hover=true;stop()});c.addEventListener('mouseleave',function(){hover=false;play()});
+    c.addEventListener('focusin',function(){hover=true;stop()});c.addEventListener('focusout',function(e){if(!c.contains(e.relatedTarget)){hover=false;play()}});
+    c.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){go(i-1,true);e.preventDefault()}if(e.key==='ArrowRight'){go(i+1,true);e.preventDefault()}});
+    var st;tr.addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(function(){var n=Math.round((tr.scrollLeft)/tr.clientWidth);if(n!==i){i=n;go(n)}},120)},{passive:true});
+    go(0);play();
+  })();
+  </script>
 </Base>

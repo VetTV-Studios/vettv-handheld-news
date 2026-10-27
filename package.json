@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "build": "node scripts/check-placeholders.mjs && astro build && pagefind --site dist",
+    "build:preview": "ALLOW_PLACEHOLDERS=1 npm run build",
     "preview": "astro preview --host 0.0.0.0 --port 4321",
     "import": "node scripts/import-articles.mjs"
   },
