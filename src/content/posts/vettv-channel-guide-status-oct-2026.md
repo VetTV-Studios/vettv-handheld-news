@@ -6,7 +6,8 @@ seoTitle: "VetTV Channel Guide Is Live: Retro Cable TV Guide for YouTube"
 pubDate: 2026-10-19
 publishedAt: 2026-10-19T18:04:04.143Z
 author: "Vet, VetTV Studios"
-category: project-updates
+category: projects
+type: news
 tags: ["vettv-studios","retro-tv","youtube","nostalgia","web-development"]
 cover: "covers/vettv-channel-guide-status-oct-2026.jpg"
 offTopic: true

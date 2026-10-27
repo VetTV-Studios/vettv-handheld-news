@@ -6,7 +6,9 @@ seoTitle: "GE-Proton11-11 Hotfix: Star Citizen EAC Fix, Video Freeze Fixes"
 pubDate: 2026-10-19
 publishedAt: 2026-10-19T18:25:32.895Z
 author: "Vet, VetTV Handheld"
-category: steamos-news
+category: linux-steamos
+type: news
+trending: true
 tags: ["ge-proton","steam-deck","steamos","linux-gaming","proton"]
 cover: "covers/ge-proton11-11-release.jpg"
 sources:

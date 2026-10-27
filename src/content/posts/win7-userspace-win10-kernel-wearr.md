@@ -7,6 +7,7 @@ pubDate: 2026-10-26
 publishedAt: 2026-10-26T13:50:37.760Z
 author: "Vet, VetTV Studios"
 category: windows
+type: news
 tags: ["windows","windows-7","windows-10","retro-computing","reverse-engineering","hobbyist-projects"]
 cover: "covers/win7-userspace-win10-kernel-wearr.jpg"
 offTopic: true

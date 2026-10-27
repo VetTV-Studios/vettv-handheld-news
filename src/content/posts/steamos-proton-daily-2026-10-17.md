@@ -5,7 +5,8 @@ summary: "SteamOS 3.9 brings Plasma 6.7, Linux 7.2 and a new Wi-Fi backend to th
 pubDate: 2026-10-17
 publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: linux-steamos
+type: news
 tags: ["steamos","proton","steam-deck","linux-gaming","legion-go"]
 cover: "covers/steamos-proton-daily-2026-10-17.jpg"
 sources:

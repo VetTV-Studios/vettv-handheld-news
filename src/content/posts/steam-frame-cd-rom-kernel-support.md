@@ -6,7 +6,8 @@ seoTitle: "Steam Frame Kernel Gets CD-ROM Support After a Forum Request"
 pubDate: 2026-10-26
 publishedAt: 2026-10-26T19:38:28.516Z
 author: "Vet, VetTV Studios"
-category: steamos-news
+category: handhelds
+type: news
 tags: ["steam-frame","steamos","valve","linux-kernel","vr"]
 cover: "covers/steam-frame-cd-rom-kernel-support.jpg"
 offTopic: true

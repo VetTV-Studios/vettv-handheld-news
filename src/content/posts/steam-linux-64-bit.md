@@ -5,7 +5,8 @@ summary: "Valve's October 15 Steam client beta moves the Linux client to 64-bit 
 pubDate: 2026-10-17
 publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: linux-steamos
+type: news
 tags: ["steam","linux-gaming","steamos","steam-deck","achievements"]
 cover: "covers/steam-linux-64-bit.jpg"
 sources:

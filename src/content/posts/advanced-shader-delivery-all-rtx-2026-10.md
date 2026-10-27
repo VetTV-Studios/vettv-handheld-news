@@ -7,6 +7,7 @@ pubDate: 2026-10-26
 publishedAt: 2026-10-26T15:24:01.116Z
 author: "Vet, VetTV Studios"
 category: windows
+type: news
 tags: ["windows","advanced-shader-delivery","directx","pc-gaming","nvidia","windows-11"]
 cover: "covers/advanced-shader-delivery-all-rtx-2026-10.jpg"
 offTopic: true

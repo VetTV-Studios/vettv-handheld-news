@@ -5,6 +5,7 @@ pubDate: 2026-10-13
 publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV"
 category: windows
+type: news
 tags: ["windows","winui","dev"]
 cover: "covers/winui-gallery-3-0.jpg"
 source: "Article Desk: winui-gallery-3-0.md"

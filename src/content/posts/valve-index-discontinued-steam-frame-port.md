@@ -5,7 +5,8 @@ summary: "Valve has ended Index production and cut the remaining stock by 20%. A
 pubDate: 2026-10-14
 publishedAt: 2026-10-17T20:54:23-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: handhelds
+type: news
 tags: ["valve-index","steam-frame","steamvr","virtual-reality","valve"]
 cover: "covers/valve-index-discontinued-steam-frame-port.jpg"
 sources:

@@ -4,7 +4,8 @@ description: "Tuesday, October 13, 2026. Valve shipped a huge Steam client updat
 pubDate: 2026-10-13
 publishedAt: 2026-10-17T20:54:18-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: linux-steamos
+type: news
 tags: ["steamos","proton","steam-deck","ge-proton","legion-go"]
 cover: "covers/steamos-proton-evening-2026-10-13.jpg"
 source: "Article Desk: steamos-proton-evening-2026-10-13.md"

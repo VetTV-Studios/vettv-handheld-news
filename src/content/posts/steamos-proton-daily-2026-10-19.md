@@ -6,7 +6,8 @@ seoTitle: "Decky Loader 3.3.0, GE-Proton11-10 and Enshrouded Deck Verified"
 pubDate: 2026-10-19
 publishedAt: 2026-10-19T13:10:00.132Z
 author: "Vet, VetTV Handheld"
-category: news
+category: linux-steamos
+type: news
 tags: ["steamos","proton","steam-deck","decky-loader","linux-gaming"]
 cover: "covers/steamos-proton-daily-2026-10-19.jpg"
 sources:

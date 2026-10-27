@@ -7,6 +7,7 @@ pubDate: 2026-10-18
 publishedAt: 2026-10-18T19:17:40-05:00
 author: "Vet, VetTV Handheld"
 category: news
+type: news
 tags: ["disney","character-ai","artificial-intelligence","tech-news","bankruptcy"]
 cover: "covers/disney-character-ai-hiring.jpg"
 offTopic: true

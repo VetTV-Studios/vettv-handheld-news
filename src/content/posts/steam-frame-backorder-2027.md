@@ -4,7 +4,8 @@ description: "Valve now shows reservation holders whether their purchase email a
 pubDate: 2026-10-13
 publishedAt: 2026-10-17T20:54:18-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: handhelds
+type: news
 tags: ["steam-frame","valve","virtual-reality","preorders","vr-headsets"]
 cover: "covers/steam-frame-backorder-2027.jpg"
 source: "Article Desk: steam-frame-backorder-2027.md"

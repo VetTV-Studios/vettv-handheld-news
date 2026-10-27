@@ -7,6 +7,8 @@ pubDate: 2026-10-26
 publishedAt: 2026-10-26T21:49:58.632Z
 author: "Vet, VetTV Studios"
 category: handhelds
+type: news
+trending: true
 tags: ["rog-ally","fsr-4","amd","optiscaler","handheld-pc"]
 cover: "covers/fsr-4-1-2-lite-rog-ally-game-bar-widget.jpg"
 offTopic: true

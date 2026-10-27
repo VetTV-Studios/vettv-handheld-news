@@ -1,0 +1,7 @@
+---
+// Text: src/legal/content-disclosure.md, verbatim from Article Desk (Oct 27, 2026; approved by Vet).
+import Base from '../layouts/Base.astro'; import { Content, frontmatter } from '../legal/content-disclosure.md';
+---
+<Base title={frontmatter.title} description={`${frontmatter.title} for VetTV Handheld News.`}>
+  <article class="post page-doc"><p class="kicker">Legal</p><div class="prose"><Content /></div></article>
+</Base>

@@ -6,7 +6,9 @@ seoTitle: "SteamOS 3.9 Stable: Arch, Plasma 6.7.3, Linux 7.2 and More"
 pubDate: 2026-10-24
 publishedAt: 2026-10-24T13:06:19.196Z
 author: "Vet, VetTV Handheld"
-category: steamos-news
+category: linux-steamos
+type: news
+trending: true
 tags: ["steamos","steam-deck","linux-gaming","valve","handheld-pc"]
 cover: "covers/steamos-3-9-stable-daily-2026-10-24.jpg"
 order: 1

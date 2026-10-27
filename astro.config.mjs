@@ -6,7 +6,16 @@ export default defineConfig({
   site: 'https://vettv-studios.github.io',
   base: '/vettv-handheld-news',
   trailingSlash: 'always',
-  // Old section slug (renamed Oct 19, 2026) keeps working.
-  redirects: { '/retro-emulation-cloud': '/vettv-handheld-news/retro-emulation/' },
-  integrations: [sitemap({ filter: (page) => !page.includes('/retro-emulation-cloud') })],
+  // Renamed/merged section slugs keep working (Oct 2026 redesign). /guides/ and /reviews/ are real type pages.
+  redirects: {
+    '/retro-emulation-cloud': '/vettv-handheld-news/gaming/',
+    '/steamos-news': '/vettv-handheld-news/linux-steamos/',
+    '/decky-plugins': '/vettv-handheld-news/tags/decky-loader/',
+    '/reactos-open-nt': '/vettv-handheld-news/open-nt/',
+    '/cloud-gaming': '/vettv-handheld-news/gaming/',
+    '/retro-emulation': '/vettv-handheld-news/gaming/',
+    '/steam-deals': '/vettv-handheld-news/deals/',
+    '/project-updates': '/vettv-handheld-news/projects/',
+  },
+  integrations: [sitemap({ filter: (page) => !/\/(retro-emulation-cloud|steamos-news|decky-plugins|reactos-open-nt|cloud-gaming|retro-emulation|steam-deals|project-updates)\/$/.test(page) })],
 });

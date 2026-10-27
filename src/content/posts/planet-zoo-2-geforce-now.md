@@ -4,7 +4,8 @@ description: "Frontier's new zoo sim launched October 13 on PC, PS5, and Xbox Se
 pubDate: 2026-10-13
 publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV Handheld"
-category: cloud-gaming
+category: gaming
+type: news
 tags: ["cloud-gaming","geforce-now","planet-zoo-2"]
 cover: "covers/planet-zoo-2-geforce-now.jpg"
 source: "Article Desk: planet-zoo-2-geforce-now.md"

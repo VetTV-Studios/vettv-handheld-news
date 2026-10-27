@@ -6,6 +6,7 @@ pubDate: 2026-10-17
 publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
 category: news
+type: news
 tags: ["gmail","gemini","google-workspace","ai","productivity"]
 cover: "covers/gmail-gemini-work-emails.jpg"
 offTopic: true

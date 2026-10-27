@@ -4,7 +4,8 @@ description: "Valve's latest beta finally gives the Legion Go 2 native brightnes
 pubDate: 2026-10-13
 publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: linux-steamos
+type: news
 tags: ["steamos","legion-go","beta"]
 cover: "covers/steamos-3-9-2-beta-legion-go.jpg"
 featured: true

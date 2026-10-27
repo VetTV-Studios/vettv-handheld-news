@@ -5,7 +5,8 @@ summary: "Microsoft has confirmed phone message previews in Start and phone cont
 pubDate: 2026-10-17
 publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: windows
+type: news
 tags: ["windows-11","microsoft","phone-link","start-menu","windows-insider"]
 cover: "covers/windows-11-start-menu-phone-settings-store.jpg"
 offTopic: true

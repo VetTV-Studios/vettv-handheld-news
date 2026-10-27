@@ -1,21 +1,43 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro'; import Card from '../../components/Card.astro'; import Subscribe from '../../components/Subscribe.astro';
-import { CATS, url, asset, fmt, SITE } from '../../site';
+import { CATS, TYPE_LABEL, url, asset, fmt, SITE, sortPosts, readMins } from '../../site';
 export async function getStaticPaths() { return (await getCollection('posts')).map(post => ({ params: { id: post.id }, props: { post } })); }
 const { post } = Astro.props; const d = post.data; const { Content } = await render(post);
-const related = (await getCollection('posts')).filter(p => p.id !== post.id && (p.data.category === d.category || p.data.tags.some(t => d.tags.includes(t)))).slice(0, 3);
-const ld = { '@context': 'https://schema.org', '@type': 'NewsArticle', headline: d.title, description: d.description, datePublished: d.pubDate.toISOString(), author: { '@type': 'Person', name: d.author }, publisher: { '@type': 'Organization', name: SITE.name }, image: d.cover ? [new URL(asset(d.cover), Astro.site).href] : undefined, citation: d.sources.length ? d.sources.map(s => ({ '@type': 'CreativeWork', name: s.title, url: s.url })) : undefined };
+const all = sortPosts(await getCollection('posts')).filter(p => p.id !== post.id);
+const related = [...all.filter(p => p.data.category === d.category), ...all.filter(p => p.data.category !== d.category && p.data.tags.some(t => d.tags.includes(t)))].slice(0, 4);
+const more = all.filter(p => !related.includes(p)).slice(0, 3);
+const canon = new URL(Astro.url.pathname, Astro.site).href; const enc = encodeURIComponent;
+const t = d.type !== 'news' ? d.type : '';
+const ld = { '@context': 'https://schema.org', '@type': d.type === 'opinion' ? 'OpinionNewsArticle' : d.type === 'review' ? 'Review' : 'NewsArticle', headline: d.title, description: d.description, datePublished: d.pubDate.toISOString(), articleSection: CATS[d.category], keywords: d.tags.join(', '), author: { '@type': 'Person', name: d.author }, publisher: { '@type': 'Organization', name: SITE.name }, image: d.cover ? [new URL(asset(d.cover), Astro.site).href] : undefined, citation: d.sources.length ? d.sources.map(s => ({ '@type': 'CreativeWork', name: s.title, url: s.url })) : undefined };
 ---
 <Base title={d.title} seoTitle={d.seoTitle} description={d.description} image={d.cover} type="article" active={d.category}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(ld)} />
+  <div class="article-frame">
   <article class="post" data-pagefind-body>
-    <div class="meta" data-pagefind-ignore><a class="pill" href={url(d.category)}>{CATS[d.category]}</a>{d.sample && <span class="pill sample">Sample</span>}<time datetime={d.pubDate.toISOString()}>{fmt(d.pubDate)}</time></div>
-    <h1>{d.title}</h1><p class="dek">{d.description}</p><p class="by">By {d.author}</p>
+    <nav class="crumbs" data-pagefind-ignore aria-label="Breadcrumb"><a href={url('')}>Home</a><span>›</span><a href={url(d.category)}>{CATS[d.category]}</a></nav>
+    <div class="meta kicker-row" data-pagefind-ignore><a class="pill" href={url(d.category)}>{CATS[d.category]}</a>{t && <span class={`type type-${t}`}>{TYPE_LABEL[t]}</span>}{d.sample && <span class="pill sample">Sample</span>}</div>
+    <h1>{d.title}</h1><p class="dek">{d.description}</p>
+    {d.type === 'opinion' && <p class="opinion-note" data-pagefind-ignore>Opinion: this piece is the author's view, not straight news.</p>}
+    <div class="byline-card" data-pagefind-ignore>
+      <img src={asset('art/profile_800x800.png')} alt="" width="44" height="44" />
+      <div><b>By {d.author}</b><span><time datetime={d.pubDate.toISOString()}>{fmt(d.pubDate)}</time> · {readMins(post.body)} min read</span></div>
+      <div class="share" aria-label="Share">
+        <button type="button" onclick={`navigator.clipboard&&navigator.clipboard.writeText('${canon}');this.textContent='Copied'`}>Copy link</button>
+        <a href={`https://x.com/intent/post?url=${enc(canon)}&text=${enc(d.title)}`}>X</a>
+        <a href={`https://bsky.app/intent/compose?text=${enc(d.title + ' ' + canon)}`}>Bluesky</a>
+        <a href={`https://www.reddit.com/submit?url=${enc(canon)}&title=${enc(d.title)}`}>Reddit</a>
+      </div>
+    </div>
     {d.cover && <img class="cover" src={asset(d.cover)} alt="" />}
     <div class="prose"><Content /></div>
     <p class="tags">{d.tags.map(t => <a class="tag" href={url(`tags/${t}`)}>#{t}</a>)}</p>
   </article>
+  <aside class="rail post-rail" data-pagefind-ignore>
+    {related.length > 0 && <div class="rail-block"><h2 class="rail-title">Related</h2>{related.map(p => <Card post={p} variant="compact" />)}</div>}
+    <div class="rail-block"><h2 class="rail-title">Latest</h2>{all.slice(0, 5).map((p, i) => <Card post={p} variant="rank" n={i + 1} />)}</div>
+  </aside>
+  </div>
   <div class="post-sub"><Subscribe id="post-sub" heading="Liked this? Get more every week" /></div>
-  {related.length > 0 && <><h2 class="sec">Related</h2><section class="grid">{related.map(p => <Card post={p} />)}</section></>}
+  {more.length > 0 && <><h2 class="sec"><span>More from VetTV</span></h2><section class="grid">{more.map(p => <Card post={p} />)}</section></>}
 </Base>

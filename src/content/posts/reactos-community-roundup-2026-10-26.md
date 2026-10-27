@@ -6,7 +6,8 @@ seoTitle: "ReactOS news: CusDeb OS alpha, LiberNT runs Gemma 4, UDFS benchmark"
 pubDate: 2026-10-26
 publishedAt: 2026-10-26T18:52:31.436Z
 author: "Vet, VetTV Studios"
-category: reactos-open-nt
+category: open-nt
+type: news
 tags: ["reactos","open-source","libernt","cusdeb-os","retro-computing"]
 cover: "covers/reactos-community-roundup-2026-10-26.jpg"
 offTopic: true

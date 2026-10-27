@@ -5,7 +5,8 @@ summary: "Xbox has formed a new Labs team to experiment with ports and browser p
 pubDate: 2026-10-15
 publishedAt: 2026-10-17T20:54:39-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: windows
+type: news
 tags: ["xbox","windows-11","id-xbox","xbox-labs","pc-gaming"]
 cover: "covers/xbox-windows-roundup-2026-10-15.jpg"
 offTopic: true

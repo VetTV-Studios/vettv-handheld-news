@@ -4,7 +4,8 @@ description: "Tuesday, October 13, 2026. This week's Steam client betas fix HEVC
 pubDate: 2026-10-13
 publishedAt: 2026-10-17T20:54:12-05:00
 author: "Vet, VetTV Handheld"
-category: news
+category: linux-steamos
+type: news
 tags: ["steamos","proton","steam-deck","remote-play"]
 cover: "covers/steamos-proton-daily-2026-10-13.jpg"
 source: "Article Desk: steamos-proton-daily-2026-10-13.md"

@@ -1,0 +1,16 @@
+---
+import { url, fmt } from '../site'; import { when } from '../tracker';
+const { rows, kind, limit } = Astro.props; const list = limit ? rows.slice(0, limit) : rows;
+---
+<div class="trk-wrap"><table class="trk">
+  <thead><tr><th>Title</th><th>Platforms</th>{kind === 'soft-launches' && <th>Regions</th>}<th>{kind === 'delistings' ? 'Ends' : 'Date'}</th><th>Status</th>{!limit && <th>Source</th>}</tr></thead>
+  <tbody>{list.map(({ data: d }) => (
+    <tr>
+      <td class="trk-t"><b>{d.title}</b>{d.placeholder && <span class="pill sample">Placeholder</span>}{!limit && d.note && <small>{d.note}</small>}</td>
+      <td>{d.platforms.join(', ')}</td>
+      {kind === 'soft-launches' && <td class="trk-cc">{d.region.map(c => c === 'others' ? <span class="muted">+ others</span> : <abbr title={c}>{c}</abbr>)}</td>}
+      <td class="trk-when">{when(d)}</td>
+      <td><span class={`st st-${d.status.toLowerCase()}`}>{d.status}</span></td>
+      {!limit && <td class="trk-src"><a href={d.source_url} rel="noopener">{d.source_name || new URL(d.source_url).hostname}</a><small>Checked {fmt(d.last_verified)}</small></td>}
+    </tr>))}</tbody>
+</table></div>
