@@ -72,6 +72,7 @@ const map = {
   'delta-2-iphone-duo-emulator': { dir: '/workspace/vettv-articles', cover: 'delta-2-iphone-duo-emulator', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
   'google-play-game-finder-gamer-dna': { dir: '/workspace/vettv-articles', cover: 'google-play-game-finder-gamer-dna', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
   'retro-week-odin-3-portal-atari-vcs-store': { dir: '/workspace/vettv-articles', cover: 'retro-week-odin-3-portal-atari-vcs-store', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'apple-creator-studio-november-update': { dir: '/workspace/vettv-articles', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
   'raven-nt-kernel-linux-reactos-ntfs': { dir: '/workspace/vettv-articles', cover: 'raven-nt-kernel-linux-reactos-ntfs', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
 };
 // Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, a 'steamos-news' tag -> SteamOS News, else News.
