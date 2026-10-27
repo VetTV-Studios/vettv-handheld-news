@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro'; import Card from '../components/Card.astro';
 import { CATS, CAT_DESC, sortPosts } from '../site';
 export async function getStaticPaths() {
-  const all = await getCollection('posts');
+  const all = await getCollection('posts', ({ data }) => !data.draft || process.env.SHOW_DRAFTS === '1');
   return Object.keys(CATS).map(category => ({ params: { category }, props: { posts: sortPosts(category === 'news' ? all : all.filter(p => p.data.category === category)) } }));
 }
 const { category } = Astro.params; const { posts } = Astro.props;

@@ -3,7 +3,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro'; import Card from '../components/Card.astro';
 import { sortPosts } from '../site';
-const posts = sortPosts((await getCollection('posts')).filter(p => p.data.type === 'review'));
+const posts = sortPosts((await getCollection('posts', ({ data }) => !data.draft || process.env.SHOW_DRAFTS === '1')).filter(p => p.data.type === 'review'));
 ---
 <Base title="Reviews" description="Reviews from VetTV Handheld News, across every section.">
   <header class="page-head"><p class="kicker">Type</p><h1 class="page-h">Reviews</h1><p class="cat-desc">Reviews from every section.</p></header>

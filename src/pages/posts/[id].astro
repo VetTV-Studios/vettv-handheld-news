@@ -2,9 +2,9 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro'; import Card from '../../components/Card.astro'; import Subscribe from '../../components/Subscribe.astro';
 import { CATS, TYPE_LABEL, url, asset, fmt, SITE, sortPosts, readMins } from '../../site';
-export async function getStaticPaths() { return (await getCollection('posts')).map(post => ({ params: { id: post.id }, props: { post } })); }
+export async function getStaticPaths() { return (await getCollection('posts', ({ data }) => !data.draft || process.env.SHOW_DRAFTS === '1')).map(post => ({ params: { id: post.id }, props: { post } })); }
 const { post } = Astro.props; const d = post.data; const { Content } = await render(post);
-const all = sortPosts(await getCollection('posts')).filter(p => p.id !== post.id);
+const all = sortPosts(await getCollection('posts', ({ data }) => !data.draft || process.env.SHOW_DRAFTS === '1')).filter(p => p.id !== post.id);
 const related = [...all.filter(p => p.data.category === d.category), ...all.filter(p => p.data.category !== d.category && p.data.tags.some(t => d.tags.includes(t)))].slice(0, 4);
 const more = all.filter(p => !related.includes(p)).slice(0, 3);
 const canon = new URL(Astro.url.pathname, Astro.site).href; const enc = encodeURIComponent;

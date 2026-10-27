@@ -56,6 +56,10 @@ const map = {
   'steam-frame-cd-rom-kernel-support': { dir: '/workspace/vettv-articles', cat: 'steamos-news', tags: ['steam-frame','steamos','valve','linux-kernel','vr'], cover: 'steam-frame-cd-rom-kernel-support', offTopic: true, author: 'Vet, VetTV Studios' },
   'fsr-4-1-2-lite-rog-ally-game-bar-widget': { dir: '/workspace/vettv-articles', cat: 'handhelds', tags: ['rog-ally','fsr-4','amd','optiscaler','handheld-pc'], cover: 'fsr-4-1-2-lite-rog-ally-game-bar-widget', offTopic: true, date: '2026-10-26', desk2: true, author: 'Vet, VetTV Studios' },
   'windows-refs-removable-media-block-2027': { dir: '/workspace/vettv-articles', cat: 'windows', tags: ['windows','windows-11','refs','windows-update','usb','storage'], cover: 'windows-refs-removable-media-block-2027', offTopic: true, date: '2026-10-26', desk2: true, author: 'Vet, VetTV Studios' },
+  'steam-client-beta-2026-10-26': { dir: '/workspace/vettv-articles', cat: 'linux-steamos', cover: 'steam-client-beta-2026-10-26', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'decky-loader-v3-3-1': { dir: '/workspace/vettv-articles', cat: 'linux-steamos', cover: 'decky-loader-v3-3-1', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'bazzite-stable-44-20261026': { dir: '/workspace/vettv-articles', cat: 'linux-steamos', cover: 'bazzite-stable-44-20261026', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'half-life-alyx-foveated-rendering-desktop': { dir: '/workspace/vettv-articles', cat: 'gaming', cover: 'half-life-alyx-foveated-rendering-desktop', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
 };
 // Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, a 'steamos-news' tag -> SteamOS News, else News.
 const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
@@ -66,13 +70,17 @@ for (const [slug, m] of Object.entries(map)) {
   if (only.length && !only.includes(slug)) continue;
   const SRC = m.dir || SRC0;
   const f = path.join(SRC, slug + '.md'); if (!fs.existsSync(f)) { console.warn('missing', f); continue; }
-  let lines = fs.readFileSync(f, 'utf8').split('\n'); let seo2 = '';
-  if (m.desk2) { const o = []; let skip = false, dek = false;
+  let lines = fs.readFileSync(f, 'utf8').split('\n'); let seo2 = ''; let draft = false;
+  if (m.desk3 && lines[0].trim() === '---') { const end = lines.indexOf('---', 1); const fmL = lines.slice(1, end); lines = lines.slice(end + 1);
+    const g = k => { const l = fmL.find(x => x.startsWith(k + ':')); return l ? l.slice(k.length + 1).trim() : ''; };
+    if (!m.date) m.date = g('date'); draft = g('draft') === 'true';
+    if (!m.tags) m.tags = JSON.parse(g('tags') || '[]').map(x => x.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).filter(Boolean).slice(0, 3); }
+  if (m.desk2) { const o = []; let skip = false, dek = !!m.desk3;
     for (const l of lines) { const t = l.trim();
       if (/^\*\*Alternate headlines/.test(t)) { skip = true; continue; } if (skip) { if (/^[-*]\s/.test(t)) continue; skip = false; }
       const sm = t.match(/^\*\*SEO title:\*\*\s*(.+)$/); if (sm) { seo2 = sm[1]; continue; }
       if (/^\*\*(Tags|Recommended section):\*\*/.test(t)) continue;
-      if (/^\*By [^|]+\*$/.test(t)) { o.push(t.replace(/\*$/, ` | ${m.date}*`)); continue; }
+      if (/^\*By [^|]+\*$/.test(t) && !m.desk3) { o.push(t.replace(/\*$/, ` | ${m.date}*`)); continue; }
       if (!dek && /^\*[^*].+[^*]\*$/.test(t) && !/^\*(By|Disclosure)/.test(t)) { dek = true; o.splice(1, 0, '### ' + t.slice(1, -1)); continue; }
       o.push(l); }
     lines = o; }
@@ -92,12 +100,13 @@ for (const [slug, m] of Object.entries(map)) {
   const seo = cap.match(/## SEO title[^\n]*\n+([^\n]+)/); const seoTitle = seo ? seo[1].trim() : seo2;
   const sources = []; const si = lines.findIndex(l => /^##\s+Sources/i.test(l));
   if (si >= 0) for (const l of lines.slice(si + 1)) { if (/^#/.test(l)) break; const mm = l.match(/^[-*]\s+(.+?):\s+(https?:\/\/\S+)\s*$/); if (mm) sources.push({ title: mm[1], url: mm[2] }); const lk = l.match(/^[-*]\s+\[(.+?)\]\((https?:\/\/[^)\s]+)\)\s*$/); if (lk) sources.push({ title: lk[1], url: lk[2] }); }
+  if (m.desk3) for (const l of lines) if (/^\*Sources?:/.test(l.trim())) for (const mm of l.matchAll(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g)) if (!sources.some(x => x.url === mm[2])) sources.push({ title: mm[1], url: mm[2] });
   if (m.author) author = m.author; if (m.date) date = m.date;
   let body = lines.slice(i).join('\n').trim(); for (const [a, b] of m.soften || []) body = body.replaceAll(a, b);
   const src = path.join(SRC, m.cover + '-cover-pickax-1920x1080.jpg');
   let cover; if (fs.existsSync(src)) { fs.copyFileSync(src, path.join(COV, slug + '.jpg')); cover = `covers/${slug}.jpg`; }
   const fm = ['---', `title: ${q(title)}`, `description: ${q(desc)}`, `summary: ${q(desc)}`, seoTitle ? `seoTitle: ${q(seoTitle)}` : '', `pubDate: ${date}`, `publishedAt: ${new Date(fs.statSync(f).mtimeMs).toISOString()}`, `author: ${q(author)}`,
-    `category: ${sectionFor(slug, m.cat || autoCat(m.tags, title))}`, `type: ${m.type || typeFor(slug, m.cat || '')}`, m.trending ? 'trending: true' : '', `tags: ${q(m.tags)}`, cover ? `cover: ${q(cover)}` : '', m.featured ? 'featured: true' : '', m.order ? `order: ${m.order}` : '', m.offTopic ? 'offTopic: true' : '',
+    `category: ${sectionFor(slug, m.cat || autoCat(m.tags, title))}`, `type: ${m.type || typeFor(slug, m.cat || '')}`, m.trending ? 'trending: true' : '', `tags: ${q(m.tags)}`, cover ? `cover: ${q(cover)}` : '', m.featured ? 'featured: true' : '', m.order ? `order: ${m.order}` : '', m.offTopic ? 'offTopic: true' : '', draft ? 'draft: true' : '',
     sources.length ? 'sources:\n' + sources.map(x => `  - title: ${q(x.title)}\n    url: ${q(x.url)}`).join('\n') : '',
     `source: ${q('Article Desk: ' + slug + '.md')}`, '---', ''].filter(Boolean).join('\n');
   fs.writeFileSync(path.join(OUT, slug + '.md'), fm + '\n' + body + '\n');

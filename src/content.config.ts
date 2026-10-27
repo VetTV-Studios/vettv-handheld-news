@@ -8,7 +8,7 @@ const posts = defineCollection({
     author: z.string().default('Vet'), category: z.enum(CATEGORIES), tags: z.array(z.string()).default([]),
     cover: z.string().optional(), featured: z.boolean().default(false), sample: z.boolean().default(false),
     source: z.string().optional(), summary: z.string().optional(), seoTitle: z.string().optional(), offTopic: z.boolean().default(false),
-    type: z.enum(['news','opinion','guide','review','deal']).default('news'), trending: z.boolean().default(false), platforms: z.array(z.string()).default([]),
+    type: z.enum(['news','opinion','guide','review','deal']).default('news'), trending: z.boolean().default(false), draft: z.boolean().default(false), platforms: z.array(z.string()).default([]),
     sources: z.array(z.object({ title: z.string(), url: z.string().url() })).default([]),
   }),
 });
