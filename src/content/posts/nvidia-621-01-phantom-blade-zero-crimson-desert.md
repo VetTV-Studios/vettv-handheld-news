@@ -10,7 +10,6 @@ type: news
 tags: ["nvidia","dlss-4-5","game-ready-driver"]
 cover: "covers/nvidia-621-01-phantom-blade-zero-crimson-desert.png"
 offTopic: true
-draft: true
 sources:
   - title: "NVIDIA GeForce News"
     url: "https://www.nvidia.com/en-us/geforce/news/phantom-blade-zero-nvidia-geforce-game-ready-driver/"

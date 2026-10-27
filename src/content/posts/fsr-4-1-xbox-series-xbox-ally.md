@@ -10,7 +10,6 @@ type: news
 tags: ["fsr-4-1","amd","xbox"]
 cover: "covers/fsr-4-1-xbox-series-xbox-ally.jpg"
 offTopic: true
-draft: true
 sources:
   - title: "AMD Newsroom"
     url: "https://newsroom.amd.com/news/amd-fsr-upscaling-4-1-boosts-frames-image-quality/"

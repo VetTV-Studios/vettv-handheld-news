@@ -10,7 +10,6 @@ type: news
 tags: ["xbox","xbox-labs","recomp"]
 cover: "covers/xbox-labs-recompiled-pc-ports.png"
 offTopic: true
-draft: true
 sources:
   - title: "Pure Xbox"
     url: "https://www.purexbox.com/news/2026/10/xbox-knows-its-games-are-getting-recompiled-for-pc-and-its-impacting-their-future"

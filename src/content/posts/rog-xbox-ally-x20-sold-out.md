@@ -10,7 +10,6 @@ type: news
 tags: ["rog-xbox-ally-x20","asus","handheld-pc"]
 cover: "covers/rog-xbox-ally-x20-sold-out.jpg"
 offTopic: true
-draft: true
 sources:
   - title: "ASUS press release"
     url: "https://press.asus.com/news/press-releases/rog-xbox-ally-x20-anniversary-edition-available"

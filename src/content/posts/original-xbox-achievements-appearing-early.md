@@ -10,7 +10,6 @@ type: news
 tags: ["xbox","achievements","backward-compatibility"]
 cover: "covers/original-xbox-achievements-appearing-early.png"
 offTopic: true
-draft: true
 sources:
   - title: "Windows Central"
     url: "https://www.windowscentral.com/gaming/xbox/microsoft-hasnt-announced-og-xbox-achievements-yet-but-xbox-consoles-may-have-spoiled-the-surprise"

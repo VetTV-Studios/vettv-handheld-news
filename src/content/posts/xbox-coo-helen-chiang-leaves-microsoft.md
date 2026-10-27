@@ -10,7 +10,6 @@ type: news
 tags: ["xbox","microsoft","leadership"]
 cover: "covers/xbox-coo-helen-chiang-leaves-microsoft.png"
 offTopic: true
-draft: true
 sources:
   - title: "The Verge"
     url: "https://www.theverge.com/news/1018037/xbox-chief-operating-officer-helen-chiang-departure"

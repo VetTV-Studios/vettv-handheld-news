@@ -10,7 +10,6 @@ type: news
 tags: ["xbox-cloud-gaming","xbox-insider","game-pass"]
 cover: "covers/xbox-cloud-playtime-insiders.png"
 offTopic: true
-draft: true
 sources:
   - title: "Xbox Wire"
     url: "https://news.xbox.com/en-us/2026/10/21/cloud-playtime-now-available-to-test-with-xbox-insiders/"
