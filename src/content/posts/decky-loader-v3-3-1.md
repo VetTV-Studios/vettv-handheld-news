@@ -10,7 +10,7 @@ type: news
 tags: ["decky-loader","steam-deck","steamos"]
 cover: "covers/decky-loader-v3-3-1.jpg"
 offTopic: true
-draft: true
+draft: false
 sources:
   - title: "Decky Loader v3.3.1 release notes on GitHub"
     url: "https://github.com/SteamDeckHomebrew/decky-loader/releases/tag/v3.3.1"

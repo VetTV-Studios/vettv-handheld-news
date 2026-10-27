@@ -10,7 +10,7 @@ type: news
 tags: ["steam","steamos","steam-deck"]
 cover: "covers/steam-client-beta-2026-10-26.jpg"
 offTopic: true
-draft: true
+draft: false
 sources:
   - title: "Valve, Steam Beta Client Update: October 26th"
     url: "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847286114047114"

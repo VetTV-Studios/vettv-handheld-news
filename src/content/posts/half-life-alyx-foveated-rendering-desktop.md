@@ -10,7 +10,7 @@ type: news
 tags: ["half-life-alyx","steam-frame","steamvr"]
 cover: "covers/half-life-alyx-foveated-rendering-desktop.jpg"
 offTopic: true
-draft: true
+draft: false
 sources:
   - title: "Valve, Half-Life: Alyx October 26, 2026 Update"
     url: "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847286114046999"

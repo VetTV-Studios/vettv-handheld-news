@@ -10,7 +10,7 @@ type: news
 tags: ["bazzite","gamescope","linux-gaming"]
 cover: "covers/bazzite-stable-44-20261026.jpg"
 offTopic: true
-draft: true
+draft: false
 sources:
   - title: "Bazzite 44.20261026 release notes on GitHub"
     url: "https://github.com/ublue-os/bazzite/releases/tag/44.20261026"
