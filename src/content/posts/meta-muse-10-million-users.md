@@ -10,7 +10,6 @@ type: news
 tags: ["meta","muse","meta-ai"]
 cover: "covers/meta-muse-10-million-users.jpg"
 offTopic: true
-draft: false
 sources:
   - title: "Meta Q3 2026 earnings call"
     url: "https://investor.atmeta.com/investor-events/event-details/2026/Q3-2026-Earnings-Call/default.aspx"
@@ -28,7 +27,7 @@ In the call [transcript](https://www.medianama.com/wp-content/uploads/2026/10/ME
 
 ## Shopping comes first
 
-Zuckerberg called shopping "the most common use case for Muse," with "more than a quarter of people who are using Muse" shopping through it at an average purchase size over **$200**. Meta's CFO later put it as shopping being used by over 25% of Muse weekly actives. Muse uses Plaid's connector for agentic purchases.
+Zuckerberg called shopping "the most common use case for Muse," with "more than a quarter of people who are using Muse" shopping through it at an average purchase size over **$200**. Meta's CFO later put it as shopping being used by over 25% of Muse weekly actives. Meta's remarks suggested Muse relies on a Plaid connection for agentic purchases, though the company didn't spell that out.
 
 After shopping, the top uses are personal productivity, such as connecting email and calendars, and creative tasks.
 

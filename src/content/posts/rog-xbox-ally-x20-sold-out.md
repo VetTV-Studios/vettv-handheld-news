@@ -20,7 +20,7 @@ sources:
     url: "https://www.windowscentral.com/hardware/handheld-gaming-pc/asus-rog-xbox-ally-x20-sold-out-in-days"
 source: "Article Desk: rog-xbox-ally-x20-sold-out.md"
 ---
-ASUS's **ROG Xbox Ally X20** went on sale on **October 15**, and within days it was gone. [Windows Central](https://www.windowscentral.com/hardware/handheld-gaming-pc/asus-rog-xbox-ally-x20-sold-out-in-days) reported on October 20 that both the standalone handheld and the limited bundle were sold out at **Best Buy and ASUS.com**. Based on a Reddit thread, the outlet thinks stock ran out over the weekend of October 18 and 19.
+ASUS's **ROG Xbox Ally X20** went on sale on **October 15**, and within days it was gone. [Windows Central](https://www.windowscentral.com/hardware/handheld-gaming-pc/asus-rog-xbox-ally-x20-sold-out-in-days) reported on October 20 that both the standalone handheld and the limited bundle were sold out at **Best Buy and ASUS.com**. Based on a Reddit thread, the outlet thinks stock ran out on Sunday, October 18, or Monday, October 19.
 
 ## Pricing
 

@@ -10,7 +10,6 @@ type: news
 tags: ["raven","reactos","open-nt"]
 cover: "covers/raven-nt-kernel-linux-reactos-ntfs.jpg"
 offTopic: true
-draft: false
 sources:
   - title: "Mirko Brombin on X"
     url: "https://x.com/brombinmirko/status/2113490282213740771"
@@ -54,7 +53,7 @@ For games, graphics go straight to **Wayland and Vulkan**, with **DXVK and vkd3d
 
 Raven is early. The [installation docs](https://useraven.org/docs/installation/) say you build it from source for now, it needs Linux x86_64 and a Wayland session for graphical apps, and prebuilt releases are "on the way."
 
-The project's own October 23 test audit recorded 276 passes and 8 failures out of 284 tests. LockerGnome reports the app scorecard puts Notepad++ 8.7.1 at 100%, KeePass at 50%, and 7-Zip, Audacity, ClassiCube and Minesweeper at 75%.
+LockerGnome reports the app scorecard puts Notepad++ 8.7.1 at 100%, KeePass at 50%, and 7-Zip, Audacity, ClassiCube and Minesweeper at 75%.
 
 Raven's preliminary benchmarks show ClassiCube at **71.5fps versus 63.0fps** for Wine 11.0. Those numbers come from the project itself, on one machine (LockerGnome identifies it as an Intel Core i7-13700H), using **software Vulkan**. Results on a real GPU are still unknown.
 
@@ -64,7 +63,7 @@ Raven's preliminary benchmarks show ClassiCube at **71.5fps versus 63.0fps** for
 
 ReactOS is building a free, Windows-compatible operating system from scratch, and it turned 30 this year ([Neowin](https://www.neowin.net/news/open-source-windows-reactos-finally-reaching-vista-7-8-81-level-gets-ntfs-support/)). The team has been posting progress on X, including an October 2 clip of "a test program running on #ReactOS" ([@reactos](https://x.com/reactos/status/2105937347808317824)).
 
-The bigger news came on **October 17**. ReactOS's own NTFS driver can now install and run the OS from an NTFS partition and can format NTFS ([Phoronix](https://www.phoronix.com/news/ReactOS-NTFS-Driver)). Until now, installs needed FAT-based partitions ([Ars Technica](https://arstechnica.com/information-technology/2026/10/reactos-reaches-major-milestone-with-ntfs-install-support/)). Read-only NTFS support dates to 2016, and NTFS boot support reached the FreeLoader bootloader in 2022, so this caps nearly a decade of work ([Linuxiac](https://linuxiac.com/reactos-now-supports-installation-on-ntfs-after-nearly-a-decade-of-work/)). The team says the driver still lacks caching, journaling and security support and may have undiscovered bugs.
+The bigger news came on **October 17**. ReactOS's own NTFS driver can now install and run the OS from an NTFS partition and can format NTFS ([Phoronix](https://www.phoronix.com/news/ReactOS-NTFS-Driver)). Until now, installs needed FAT-based partitions ([Ars Technica](https://arstechnica.com/information-technology/2026/10/reactos-reaches-major-milestone-with-ntfs-install-support/)). Read-only NTFS support has existed for years, and NTFS boot support reached the FreeLoader bootloader in 2022, so this caps nearly a decade of work ([Linuxiac](https://linuxiac.com/reactos-now-supports-installation-on-ntfs-after-nearly-a-decade-of-work/)). The team says the driver still lacks caching, journaling and security support and may have undiscovered bugs.
 
 A day later, ReactOS replaced "Documents and Settings" with "Users," describing it as part of a move to NT6, the Vista-and-later generation of Windows ([Joho no Todai](https://joho-todai.com/en/reactos-nt6-path-structure-migration/)). It's a change to folder paths, not Vista-level app compatibility. ReactOS 0.4.16, released in August with a graphical installer, is still the latest official release, and the OS is still alpha.
 
