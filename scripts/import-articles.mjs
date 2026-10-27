@@ -60,6 +60,7 @@ const map = {
   'decky-loader-v3-3-1': { dir: '/workspace/vettv-articles', cat: 'linux-steamos', cover: 'decky-loader-v3-3-1', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
   'bazzite-stable-44-20261026': { dir: '/workspace/vettv-articles', cat: 'linux-steamos', cover: 'bazzite-stable-44-20261026', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
   'half-life-alyx-foveated-rendering-desktop': { dir: '/workspace/vettv-articles', cat: 'gaming', cover: 'half-life-alyx-foveated-rendering-desktop', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'recomplauncher-console-recomp-catalog': { dir: '/workspace/vettv-articles', cat: 'gaming', cover: 'recomplauncher-console-recomp-catalog', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
 };
 // Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, a 'steamos-news' tag -> SteamOS News, else News.
 const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
