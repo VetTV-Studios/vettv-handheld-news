@@ -79,6 +79,9 @@ const map = {
   'xbox-labs-recompiled-pc-ports': { dir: '/workspace/vettv-articles', cover: 'xbox-labs-recompiled-pc-ports', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
   'xbox-coo-helen-chiang-leaves-microsoft': { dir: '/workspace/vettv-articles', cover: 'xbox-coo-helen-chiang-leaves-microsoft', offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
   'apple-creator-studio-november-update': { dir: '/workspace/vettv-articles', cover: 'apple-creator-studio-november-update', live: true, offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'reactos-ntfs-install-support': { dir: '/workspace/vettv-articles', cover: 'reactos-ntfs-install-support', live: true, offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'nvidia-621-01-game-ready-driver': { dir: '/workspace/vettv-articles', cover: 'nvidia-621-01-game-ready-driver', live: true, offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
+  'crimson-desert-charting-the-unknown-oct-29': { dir: '/workspace/vettv-articles', cover: 'crimson-desert-charting-the-unknown-oct-29', live: true, offTopic: true, desk2: true, desk3: true, author: 'Vet, VetTV Studios' },
 };
 // Auto-section rule for drafts without an explicit `cat`: cloud services -> Cloud Gaming, a 'steam-deals' tag -> Steam Deals, a 'steamos-news' tag -> SteamOS News, else News.
 const CLOUD = /\b(amazon[- ]?luna|luna|xbox[- ]cloud[- ]gaming|xcloud|geforce[- ]?now|boosteroid)\b/i;
