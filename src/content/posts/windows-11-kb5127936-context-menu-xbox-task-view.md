@@ -13,13 +13,15 @@ cover: "covers/windows-11-kb5127936-context-menu-xbox-task-view.png"
 sources:
   - title: "Windows Central: Windows 11 KB5127936 is now available"
     url: "https://www.windowscentral.com/microsoft/windows-11/windows-11-kb5127936-update-is-now-available-with-overhauled-context-menus-that-are-faster-and-more-customizable"
+  - title: "Thurrott.com: Microsoft Ships the Week D Preview Updates for Windows 11"
+    url: "https://www.thurrott.com/windows/windows-11/343340/microsoft-ships-the-week-d-preview-updates-for-windows-11"
 source: "Article Desk: windows-11-kb5127936-context-menu-xbox-task-view.md"
 ---
-Microsoft released KB5127936 on October 28. It's this month's optional non-security update for Windows 11, and its headline feature is a reworked right-click context menu.
+Microsoft released KB5127936 on October 28. It's this month's optional non-security preview update for Windows 11 versions 25H2 and 26H2, moving them to builds 26200.9818 and 26300.9818 respectively. Its headline feature is a reworked right-click context menu.
 
 ## A faster, customizable context menu
 
-Microsoft says the new menu is "faster, simpler, and more customizable," opens more quickly and has less clutter. Windows Central reports these options are coming with it:
+Microsoft says the new menu in File Explorer and on the desktop is "faster, simpler, and more customizable," opens more quickly and has less clutter. Windows Central reports these options are coming with it:
 
 - Turn built-in commands like Send to and Create shortcut on or off.
 - Add commands such as Print.
@@ -29,10 +31,18 @@ Microsoft says the new menu is "faster, simpler, and more customizable," opens m
 
 Windows Central says the change is part of Microsoft's "Windows K2" effort to fix long-standing complaints about the OS.
 
-## Xbox task view and more
+## Gaming Task View in Xbox mode
 
-The update also starts rolling out the new Xbox task view interface, along with changes to File Explorer and Settings. VetTV has covered the Insider builds where the Gaming Task View in Xbox mode gained shortcuts for Exit to Desktop and Power Options.
+The update brings a refreshed Gaming Task View to Xbox mode, with a new navigation bar for quick access to Exit to Desktop and Power Options. VetTV covered the feature when it first appeared in Insider builds.
 
-## Don't expect it right away
+## Cloud Rebuild and more
 
-These features are rolling out gradually. Turning on "Get the latest updates as soon as they're available" in Windows Update puts you earlier in line, but you may still have to wait before the new menu shows up. Because KB5127936 is optional, you'll need to install it yourself from Windows Update.
+KB5127936 also adds Cloud Rebuild, a new recovery option that reinstalls Windows 11 using a Windows image and device drivers downloaded from Windows Update. It doesn't need an ISO image or a USB recovery drive. Other changes, according to Thurrott.com:
+
+- Dark mode for the File Explorer Folder Options dialog, among other File Explorer improvements.
+- A Privacy & security page in Settings that groups Camera, Microphone and Location controls on the main page.
+- Phone Link improvements in Start, including the ability to learn more about a recent message or notification by hovering over it in the sidebar.
+
+## When you'll get it
+
+Because KB5127936 is optional, you need to install it yourself from Windows Update, and the new features roll out gradually. Turning on "Get the latest updates as soon as they're available" puts you earlier in line. Thurrott reports the features will roll out to everyone starting November 10, that month's Patch Tuesday.
