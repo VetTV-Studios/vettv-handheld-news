@@ -11,4 +11,6 @@ Some links on VetTV Handheld News, such as links in deal posts, may be affiliate
 - Deal and review posts that contain affiliate links say so in the post.
 - We don't accept payment for positive coverage. Any sponsored content will be clearly labeled as sponsored.
 
+VetTV Handheld News is run by VetTV Studios. Some pages promote VetTV Studios' own products, such as our Grok Bot templates and setup services at [vettvstudios.com/bots](https://vettvstudios.com/bots). We earn money when you buy them, and our coverage stays independent of those products.
+
 Questions? Write to [Vetgaming1982@outlook.com](mailto:Vetgaming1982@outlook.com).
