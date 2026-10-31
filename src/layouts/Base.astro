@@ -43,7 +43,7 @@ const og = new URL(asset(image || 'art/banner_2560x1440.png'), Astro.site);
   <nav class="cats"><div class="wrap">
     {Object.entries(CATS).map(([k, v]) => <a href={url(k)} class={active === k ? 'on' : ''}>{v}</a>)}
     <a href={url('videos')} class={`nav-vid ${active === 'videos' ? 'on' : ''}`}>Videos</a>
-    <a href={url('subscribe')} class={`c-extra nav-sub ${active === 'subscribe' ? 'on' : ''}`}>Subscribe</a>
+    <a href={url('subscribe')} class={`c-extra nav-sub ${active === 'subscribe' ? 'on' : ''}`}>Subscribe</a><a href="https://vettvstudios.com/bots" rel="noopener" class="c-extra nav-bots">Bots</a>
   </div></nav>
 </header>
 <div class="m-only m-drawer" id="m-drawer" aria-label="Sections">

@@ -1,0 +1,14 @@
+---
+const P = [
+  ['Single Bot Template', '$29', 'https://buy.stripe.com/8x23cx3A1aUU6UZ0906Ri00'],
+  ['Template Bundle (all 5)', '$99', 'https://buy.stripe.com/4gM28t8Ul2oofrv1d46Ri01'],
+  ['Done-for-you Setup', '$249/bot', 'https://buy.stripe.com/00w3cxc6x8MM5QV0906Ri02'],
+  ['Custom Bot Build', '$250 deposit', 'https://buy.stripe.com/3cIaEZfiJ7IIfrv0906Ri03'],
+];
+---
+<aside class="bots-card" aria-labelledby="bots-h" data-pagefind-ignore>
+  <p class="bots-kick">From VetTV Studios</p>
+  <h2 id="bots-h">Bots that do the work</h2>
+  <p>Ready-made Grok Bot templates and done-for-you setup. <a href="https://vettvstudios.com/bots" rel="noopener">See all bots</a></p>
+  <div class="bots-btns">{P.map(([n, pr, u]) => <a class="bots-btn" href={u} target="_blank" rel="noopener sponsored"><b>{n}</b><span>{pr}</span></a>)}</div>
+</aside>

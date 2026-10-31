@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import Base from '../../layouts/Base.astro'; import Card from '../../components/Card.astro'; import Subscribe from '../../components/Subscribe.astro';
+import Base from '../../layouts/Base.astro'; import Card from '../../components/Card.astro'; import Subscribe from '../../components/Subscribe.astro'; import BotsCard from '../../components/BotsCard.astro';
 import { CATS, TYPE_LABEL, url, asset, fmt, SITE, sortPosts, readMins } from '../../site';
 export async function getStaticPaths() { return (await getCollection('posts', ({ data }) => !data.draft || process.env.SHOW_DRAFTS === '1')).map(post => ({ params: { id: post.id }, props: { post } })); }
 const { post } = Astro.props; const d = post.data; const { Content } = await render(post);
@@ -39,6 +39,7 @@ const ld = { '@context': 'https://schema.org', '@type': d.type === 'opinion' ? '
     <div class="rail-block"><h2 class="rail-title">Latest</h2>{all.slice(0, 5).map((p, i) => <Card post={p} variant="rank" n={i + 1} />)}</div>
   </aside>
   </div>
+  <div class="post-sub"><BotsCard /></div>
   <div class="post-sub"><Subscribe id="post-sub" heading="Liked this? Get more every week" /></div>
   {more.length > 0 && <><h2 class="sec"><span>More from VetTV</span></h2><section class="grid">{more.map(p => <Card post={p} />)}</section></>}
 </Base>
